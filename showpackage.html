@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+<center><h1>Package</h1></center>
+<center>
+<table id="t01" class="center">
+    <tr>
+        <th>Package Name</th>
+        <th>Amount</th>
+        <th>Photo</th>
+        <th>Edit Packages</th>
+    </tr>
+    <tr>
+        {% for i in d %}
+         <form action="editpackage" method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+        <td>{{i.pname}}</td>
+        <td>{{i.pamount}}</td>
+        <td><img src="{{i.photo.url}}"  width="150" height="150"></td>
+         <input type="hidden" name="id" value="{{i.id}}">
+        <td><input type="submit" value="Edit"></td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+    <div style="text-align:center">
+    <br><a href="adminhome"><input type="submit" name="adminhome" value="HOME"></a>
+    </div>
+</center>
+</body>
+</html>

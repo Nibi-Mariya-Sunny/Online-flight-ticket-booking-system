@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UserHome</title>
+<style>
+
+   .navbar {
+    overflow: hidden;
+    background-color:black;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.navbar a {
+    float: right;
+    font-size: 20px;
+    color: white;
+    text-align:right;
+    padding: 14px 18px;
+    text-decoration:none;
+
+
+
+
+}
+.navbar a:hover, dropbtn {
+    background-color: DarkBlue;
+}
+.button{
+background-color: white;
+border: none;
+color: white;
+padding: 10px 10px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+}
+.content{
+	margin:80px auto 80px;
+}
+.content p{
+	width:80%;
+	margin:30px auto 0px;
+	text-align:Justify;
+	font-size:16px;
+	line-height:25px;
+}
+.content h1{
+	text-align:center;
+	color:blue;
+}
+.header{
+padding:10px;
+text-align: left;
+background: DarkBlue;
+color: violet;
+}
+
+
+</style>
+
+</head>
+
+
+<body background="brown">
+<div class="navbar">
+	<a href="login" color=white>LOGIN</a>
+    <a href="register" color="white">SIGN UP</a>
+    <a href="showavailabileflights" color=white>AVAILABILE FLIGHTS</a>
+    <a href="contactus" color=white>CONTACT US</a>
+    <a href="packages" color=white>PACKAGES</a>
+    <a href="services" color=white>SERVICES</a>
+    <a href="aboutus" color=white>ABOUT US</a>
+
+</>
+<img src="{% static 'mhp.webp' %}" width="100%" height="100%">
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show flightrate</title>
+    <style>
+        table,th,td{
+        border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<center><h1>Flight Rate</h1></center>
+<table class="center">
+    <tr>
+        <th>Ticket Amount</th>
+    </tr>
+    <tr>
+        {% for i in d %}
+        <td>{{i.amount}}</td>
+    </tr>
+    {% endfor %}
+</body>
+</html>

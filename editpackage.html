@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>editaddon</title>
+</head>
+<body>
+<center><h1>Edit Package</h1></center>
+    <div style="text-align:center">
+<form action="updatepackage" method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+
+
+    Photo<input type="file" name="file"><br><br>
+        Package Name<input type="text" name="pname" value="{{d.pname}}"><br><br>
+        Amound<input type="text" name="pamount" value="{{d.pamount}}"><br><br>
+         <input type="hidden" value="{{d.id}}" name="id">
+    <input type="submit" name="edit" value="update">
+
+</form>
+            </div>
+</body>
+</html>

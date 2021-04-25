@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+<center><h1>My Profile</h1></center>
+<center>
+<table id="t01" class="center">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Dob</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Edit</th>
+    </tr>
+     {% for i in data %}
+    <tr>
+         <form action="editmyprofile" method="post">
+            {% csrf_token %}
+        <td>{{i.fname}}</td>
+        <td>{{i.lname}}</td>
+            <td>{{i.gender}}</td>
+             <td>{{i.dob}}</td>
+             <td>{{i.phno}}</td>
+             <td>{{i.email}}</td>
+         <input type="hidden" name="id" value="{{i.id}}">
+        <td><input type="submit" value="Edit"></td>
+        </form>
+    </tr>
+ {% endfor %}
+</table>
+    <div style="text-align:center">
+    <br><a href="Userhome"><input type="submit" name="Userhome" value="HOME"></a>
+    </div>
+</center>
+</body>
+</html>

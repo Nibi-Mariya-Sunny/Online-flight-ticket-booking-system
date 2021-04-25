@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>editaddon</title>
+</head>
+<body>
+<center><h1>Edit Addon</h1></center>
+<form action="updateaddon" method="post">
+    {% csrf_token %}
+    <div style="text-align:center">
+    <input type="hidden" value="{{d.id}}" name="id">
+    Addon Name<input type="text" name="aname" value="{{d.aname}}"><br><br>
+        Amound<input type="text" name="amound" value="{{d.amount}}"><br><br>
+    <input type="submit" name="edit" value="update">
+    </div>
+</form>
+</body>
+</html>

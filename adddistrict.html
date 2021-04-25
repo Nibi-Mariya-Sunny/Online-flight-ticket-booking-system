@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>addflightname</title>
+</head>
+<body>
+<div style="text-align:center">
+<div class="container p-3 my-3  text-white" style="background-color:#009999;">
+<center><h1>Add District</h1></center>
+    </div></div>
+<form action="districtreg" method="post">
+    {% csrf_token %}
+    <div class="container-sm border"><br>
+<div class="container">
+<div class="col" style="background-color:white;">
+    <div class="form-group">
+      <div style="text-align:left">
+      <label for="name"><b>STATE NAME:<select name="id">{% for i in d %}
+    <option value="{{i.id}}">{{i.name}}</option>
+    {% endfor %}
+    </select><br><br></b></label>
+      </div></div>
+<div class="form-group">
+      <div style="text-align:left">
+      <label for="name"><b>DISTRICT NAME:</b></label>
+      <input type="text" id="name" name="name" class="form-control"  placeholder="Enter District Name">
+      </div></div>
+        <input type="submit" name="submit" value="submit">
+         <input type="reset" name="reset" value="reset">
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>addflightname</title>
+</head>
+<body>
+<div style="text-align:center">
+<div class="container p-3 my-3  text-white" style="background-color:#009999;">
+<center><h1>Add Flightname</h1></center>
+    </div></div>
+<form action="addfname" method="post">
+    {% csrf_token %}
+    <div class="container-sm border"><br>
+<div class="container">
+<div class="col" style="background-color:white;">
+    <div class="form-group">
+      <div style="text-align:left">
+      <label for="fname"><b>FLIGHT NAME:</b></label>
+    <input type="text" id="fname" name="fname" class="form-control"  placeholder="Enter Flightname">
+      </div></div>
+
+    <div class="form-group">
+      <div style="text-align:left">
+      <label for="eseats"><b>ECONOMIC CLASS SEATS:</b></label>
+      <input type="text" id="eseats" name="eseats" class="form-control"  placeholder="Enter Economic Class Seats">
+      </div></div>
+    <div class="form-group">
+      <div style="text-align:left">
+      <label for="bseats"><b>BUSINESS CLASS SEATS:</b></label>
+      <input type="text" id="bseats" name="bseats" class="form-control"  placeholder="Enter Business Class Seats">
+      </div></div>
+    <div class="form-group">
+      <div style="text-align:left">
+      <label for="ewseats"><b>ECONOMIC CLASS  WINDOW SEATS:</b></label>
+      <input type="text" id="ewseats" name="ewseats" class="form-control"  placeholder="Enter Economic Class Windowseats">
+      </div></div>
+    <div class="form-group">
+      <div style="text-align:left">
+      <label for="bwseats"><b>BUSINESS CLASS  WINDOW SEATS:</b></label>
+      <input type="text" id="bwseats" name="bwseats" class="form-control"  placeholder="Enter Business Class Windowseats">
+      </div></div>
+    <div class="form-group">
+      <div style="text-align:left">
+      <label for="motherchild"><b>MOTHER&CHILD SEATS:</b></label>
+      <input type="text" id="motherchild" name="motherchild" class="form-control"  placeholder="Enter Mother&Child Seats">
+      </div></div>
+    <!--<div class="form-group">
+      <div style="text-align:left">
+      <label for="rseats"><b>REMANING SEATS:</b></label>
+      <input type="text" id="rseats" name="rseats" class="form-control"  placeholder="Enter rseats Seats">
+      </div></div>-->
+    <input type="submit" name="submit" value="Add">
+    </div>
+</form>
+</body>
+</html>

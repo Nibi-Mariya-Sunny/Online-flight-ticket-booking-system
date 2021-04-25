@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+<center><h1>Flight Schedule</h1></center>
+<table id="t01" class="center">
+    <tr>
+        <th>Flight Name</th>
+        <th>Orgin</th>
+        <th>Destination</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+        <th>Arrival Date</th>
+        <th>Arrival Time</th>
+        <th>Book Now</th>
+        <th>View More</th>
+    </tr>
+    <tr>
+        {% for i in d %}
+        <form action="booking" method="post">
+            {% csrf_token %}
+        <td>{{i.fname}}</td>
+        <td>{{i.orgin}}</td>
+        <td>{{i.destination}}</td>
+        <td>{{i.ddate}}</td>
+        <td>{{i.dtime}}</td>
+        <td>{{i.adate}}</td>
+        <td>{{i.atime}}</td>
+        <input type="hidden" name="id" value="{{i.id}}">
+        <td><input type="submit" value="Book Now"></td>
+            <input type="hidden" name="id" value="{{i.id}}">
+        <td><input type="submit" value="View More"></td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+<div style="text-align:center">
+    <br><a href="Userhome"><input type="submit" name="Userhome" value="HOME"></a>
+    </div>
+</body>
+</html>

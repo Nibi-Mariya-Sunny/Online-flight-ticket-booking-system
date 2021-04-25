@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>editflightname</title>
+</head>
+<body>
+<center><h1>Edit Flightname</h1></center>
+<form action="update" method="post">
+    {% csrf_token %}
+    <div style="text-align:center">
+    <input type="hidden" value="{{data.id}}" name="id">
+    Flight Name<input type="text" name="fname" value="{{data.fname}}"><br><br>
+    Number of Economic Class Seats<input type="text" name="eseats" value="{{data.eseats}}"><br><br>
+    Number of Business Class Seats<input type="text" name="bseats" value="{{data.bseats}}"><br><br>
+    Number of Window Seats in Economic Class <input type="text" name="ewseats" value="{{data.ewseats}}"><br><br>
+    Number of Window Seats in Business Class<input type="text" name="bwseats" value="{{data.bwseats}}"><br><br>
+    Number of Mother&Child Seats<input type="text" name="motherchild" value="{{data.motherchild}}"><br><br>
+     Number of Remaning Seats<input type="text" name="rseats" value="{{data.rseats}}"><br><br>
+    <input type="submit" name="edit" value="update">
+    </div>
+</form>
+</body>
+</html>
