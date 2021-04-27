@@ -48,5 +48,12 @@ urlpatterns = [
     path('editmyprofile', views.editmyprofile, name='editmyprofile'),
     path('updatemyprofile', views.updatemyprofile, name='updatemyprofile'),
     path('availabileflights', views.availabileflights, name='availabileflightse'),
-    path('showavailabileflights', views.showavailabileflights, name='showavailabileflightse'),
+    path('showavailabileflights', views.showavailabileflights, name='showavailabileflights'),
+    path('showreport', views.showreport, name='showreport'),
+    path('showclasstype', views.showclasstype, name='showclasstype'),
+    path('booking', views.booking, name='booking'),
+    path('bookingreg', views.bookingreg, name='bookingreg'),
+    path('bookingdetails', views.bookingdetails, name='bookingdetails'),
+    path('ecbooking', views.ecbooking, name='ecbooking'),
+
 ]

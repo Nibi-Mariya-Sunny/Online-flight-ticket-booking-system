@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>report</title>
+    <script>
+        function p()
+        {
+        print()
+        }
+    </script>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
 </head>
 <body>
+<center><h1>Registered Users</h1></center>
+<center>
+<table id="t01" class="center">
 
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Dob</th>
+        <th>Contact</th>
+        <th>Email</th>
+    </tr>
+    <tr>
+        {% for i in data %}
+        <form action="" method="post">
+            {% csrf_token %}
+        <td>{{i.fname}}</td>
+        <td>{{i.lname}}</td>
+        <td>{{i.gender}}</td>
+            <td>{{i.dob}}</td>
+        <td>{{i.phno}}</td>
+        <td>{{i.email}}</td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+    <div style="text-align:center">
+    <br><input type="submit" onclick="p()" value="PRINT">
+    </div>
+ </center>
 </body>
 </html>

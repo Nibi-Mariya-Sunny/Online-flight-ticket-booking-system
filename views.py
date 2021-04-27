@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django . http import HttpResponse
 from datetime import date
-from.models import Register,Login,Addflightname,Addplace,District,Flightrate,Addflightschedule,Addaddon,Addpackage
+from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking
 def home(request):
     return render(request,'home.html')
 def login(request):
@@ -58,25 +58,31 @@ def addfname(request):
     return render(request,'addflightname.html')
 def addflightschedule(request):
     data = Addflightname.objects.all()
-    data1 = Addplace.objects.all()
-    return render(request,'addflightschedule.html',{'data':data,'d':data1})
+    data1 = Orgin.objects.all()
+    data2=Destination.objects.all()
+    return render(request,'addflightschedule.html',{'data':data,'d':data2,'o':data1})
 '''def aaddfschedule(request):
     return render(request, 'addflightschedule.html')'''
 def addfschedule(request):
     addflightnameid= request.POST['id']
-    instance = Addflightschedule.objects.get(id=addflightnameid)
-    addplaceid = request.POST['id']
-    instance1 = Addflightschedule.objects.get(id= addplaceid)
-    fname = request.POST['id']
-    orgin = request.POST['id']
-    destination = request.POST['id']
+    instance =Addflightname.objects.get(id=addflightnameid)
+
+    org= request.POST['orgin']
+    des = request.POST['destination']
+    orgin = Orgin.objects.get(id= org)
+    destination = Destination.objects.get(id=des)
     ddate = request.POST['ddate']
     dtime = request.POST['dtime']
     adate = request.POST['adate']
     atime = request.POST['atime']
     amount = request.POST['amount']
-    data = Addflightschedule(addflightnameid=instance, addplaceid=instance1,fname=fname, orgin=orgin, destination=destination, ddate=ddate, dtime=dtime, adate=adate,
-                             atime=atime,amount=amount)
+    camount=int(amount)-300
+    iamount=int(amount)-500
+    wsamount=int(amount)+500
+    bcamount =int(amount)+2000
+    weight = request.POST['weight']
+    data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, ddate=ddate, dtime=dtime, adate=adate,
+                             atime=atime,amount=amount,camount=camount,iamount=iamount, wsamount=wsamount,bcamount=bcamount,weight=weight)
     data.save()
     return render(request,'addflightschedule.html')
 
@@ -95,7 +101,9 @@ def addplace(request):
 def placereg(request):
     orgin = request.POST['orgin']
     destination = request.POST['destination']
-    data =Addplace(orgin=orgin,destination=destination)
+    data =Orgin(orgin=orgin)
+    data.save()
+    data =Destination(destination=destination)
     data.save()
     return render(request,'addplace.html')
 def adddistrict(request):
@@ -177,8 +185,8 @@ def updateflightschedule(request):
     id=request.POST['id']
     d=Addflightschedule.objects.get(id=id)
     d.fname = request.POST['fname']
-    d.orgin = request.POST['orgin']
-    d.destination = request.POST['destination']
+    d.orgin.orgin = request.POST['orgin']
+    d.destination.destination = request.POST['destination']
     d.ddate = request.POST['ddate']
     d.dtime = request.POST['dtime']
     d.adate = request.POST['adate']
@@ -240,6 +248,37 @@ def availabileflights(request):
     data = Addflightschedule.objects.filter(ddate__gt=today).all
     return render(request,'availabileflights.html',{'d':data})
 def showavailabileflights(request):
-    today=date.today()
-    data = Addflightschedule.objects.filter(ddate__gt=today).all
-    return render(request,'showavailabileflights.html',{'d':data})
+    '''today=date.today()'''
+    id = request.POST['id']
+    data = Addflightschedule.objects.get(id=id)
+    return render(request,'showavailabileflights.html',{'data':data})
+def showreport(request):
+    data = Register.objects.all()
+    return render(request,'report.html',{'data':data})
+def showclasstype(request):
+    fid=request.POST['id']
+    request.session['fid']=fid
+    return render(request,'showclasstype.html')
+def booking(request):
+    data = Addflightschedule.objects.get(id=request.session['fid'])
+    return render(request,'booking.html',{'data':data})
+def bookingreg(request):
+    addflightscheduleid = request.POST['id']
+    instance = Addflightschedule.objects.get(id=addflightscheduleid)
+    name=request.POST['name']
+    address = request.POST['address']
+    phno= request.POST['phno']
+    email = request.POST['email']
+    userid = request.session['user']
+    data=Booking(addflightscheduleid=instance,name=name,address=address,phno=phno,email=email,userid=userid)
+    data.save()
+    data1=Booking.objects.filter(userid=userid)
+    return render(request,'bookingdetails.html',{'book':data1})
+def bookingdetails(request):
+    id = request.POST['id']
+    data = Booking.objects.get(id=id)
+    return render(request,'bookingdetails.html', {'book': data})
+def ecbooking(request):
+    data = Addflightschedule.objects.get(id=request.session['fid'])
+    return render(request,'ecbooking.html',{'data':data})
+
