@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django . http import HttpResponse
 from datetime import date
-from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking
+from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment
 def home(request):
     return render(request,'home.html')
 def login(request):
@@ -141,8 +141,9 @@ def showflightrate(request):
     data = Flightrate.objects.all()
     return render(request,'showflightrate.html',{'d':data})
 def showplaces(request):
-    data = Addplace.objects.all()
-    return render(request,'showplaces.html',{'d':data})
+    data = Orgin.objects.all()
+    data1 = Destination.objects.all()
+    return render(request,'showplaces.html',{'d':data,'data1':data1})
 def showdistrict(request):
     data = District.objects.all()
     return render(request,'showdistrict.html',{'d':data})
@@ -263,22 +264,49 @@ def booking(request):
     data = Addflightschedule.objects.get(id=request.session['fid'])
     return render(request,'booking.html',{'data':data})
 def bookingreg(request):
-    addflightscheduleid = request.POST['id']
-    instance = Addflightschedule.objects.get(id=addflightscheduleid)
-    name=request.POST['name']
-    address = request.POST['address']
-    phno= request.POST['phno']
-    email = request.POST['email']
-    userid = request.session['user']
-    data=Booking(addflightscheduleid=instance,name=name,address=address,phno=phno,email=email,userid=userid)
-    data.save()
+    if request.method=='POST':
+        addflightscheduleid = request.POST['id']
+        instance = Addflightschedule.objects.get(id=addflightscheduleid)
+        name=request.POST['name']
+        address = request.POST['address']
+        phno= request.POST['phno']
+        email = request.POST['email']
+        userid = request.session['user']
+        data=Booking(addflightscheduleid=instance,name=name,address=address,phno=phno,status=0,email=email,userid=userid)
+        data.save()
     data1=Booking.objects.filter(userid=userid)
     return render(request,'bookingdetails.html',{'book':data1})
 def bookingdetails(request):
     id = request.POST['id']
-    data = Booking.objects.get(id=id)
+    data = Booking.objects.get(id=id,status=0)
     return render(request,'bookingdetails.html', {'book': data})
 def ecbooking(request):
     data = Addflightschedule.objects.get(id=request.session['fid'])
     return render(request,'ecbooking.html',{'data':data})
+def booklist(request):
+    id = request.session['user']
+    data = Booking.objects.filter(userid=id,status=0)
+    return render(request,'booklist.html', {'book': data})
+def remove(request):
+    id=request.POST['id']
+    user=request.session['user']
+    Booking.objects.filter(id=id,status=0).delete()
+    data = Booking.objects.filter(userid=user)
+    return render(request, 'bookingdetails.html', {'book': data})
+def confirmbooking(request):
+    user = request.session['user']
+
+    Booking.objects.filter(userid=user).update(status=1)
+    data=Booking.objects.filter(userid=user,status=1)
+    amt=0
+    for i in data:
+        amt+=(i.addflightscheduleid.amount)+2000
+    data=Payment(userid=user,amt=amt,date=date,fid=i.addflightscheduleid.id,status=0)
+    data.save()
+
+    return render(request,'payment.html',{'amt':amt})
+def payment(request):
+    user = request.session['user']
+    Payment.objects.filter(userid=user).update(status=1)
+    return HttpResponse("payment Successes")
 

@@ -47,6 +47,7 @@ class Booking(models.Model):
     address = models.CharField(max_length=30)
     phno = models.IntegerField()
     email = models.CharField(max_length=30)
+    status= models.IntegerField()
 class Flightrate(models.Model):
     addflightscheduleid = models.ForeignKey(Addflightschedule, on_delete=models.CASCADE)
     amount = models.CharField(max_length=30)
@@ -57,3 +58,9 @@ class Addpackage(models.Model):
     photo = models.FileField()
     pname = models.CharField(max_length=30)
     pamount=models.IntegerField()
+class Payment(models.Model):
+    userid = models.CharField(max_length=30)
+    fid = models.CharField(max_length=30)
+    date = models.CharField(max_length=30)
+    amt = models.IntegerField()
+    status = models.IntegerField()

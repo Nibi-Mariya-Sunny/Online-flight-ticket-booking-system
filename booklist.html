@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+<body>
+<center><h1>Book List</h1></center>
+<table id="t01" class="center">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Flight Name</th>
+        <th>Orgin</th>
+        <th>Destination</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+        <th>Arrival Date</th>
+        <th>Arrival Time</th>
+        <th>Business Class Amount</th>
+        <th>Remove</th>
+    </tr>
+    <tr>
+
+        <form action="remove" method="post">
+            {% for data in book%}
+            {% csrf_token %}
+            <td>{{data.name}}</td>
+            <td>{{data.address}}</td>
+            <td>{{data.phno}}</td>
+            <td>{{data.email}}</td>
+        <td>{{data.addflightscheduleid.addflightnameid.fname}}</td>
+        <td>{{data.addflightscheduleid.orgin.orgin}}</td>
+        <td>{{data.addflightscheduleid.destination.destination}}</td>
+        <td>{{data.addflightscheduleid.ddate}}</td>
+        <td>{{data.addflightscheduleid.dtime}}</td>
+        <td>{{data.addflightscheduleid.adate}}</td>
+        <td>{{data.addflightscheduleid.atime}}</td>
+            <td>{{data.addflightscheduleid.bcamount}}</td>
+        <input type="hidden" name="id" value="{{data.id}}">
+        <td><input type="submit" value="Delete"></td>
+
+
+
+        </form>
+   </tr>
+        {% endfor %}
+</table>
+<div style="text-align:center">
+    <br><a href="bookingdetails"><input type="submit" name="home" value="go"></a>
+    </div>
+</body>
+</html>
