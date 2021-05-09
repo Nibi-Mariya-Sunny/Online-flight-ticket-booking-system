@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>addflightschedule</title>
+</head>
+<body>
+<div style="text-align:center">
+    <a href="adminhome"><input type="submit" name="home" value="HOME"></a>
+    </div>
+<div style="text-align:center">
+<div class="container p-3 my-3  text-white" style="background-color:#009999;">
+<center><h1>Add Flightschedule</h1></center>
+    </div></div>
+<form action="fsearch" method="post">
+    {% csrf_token %}
+    <div class="container-sm border"><br>
+<div class="container">
+   <div class="form-group">
+      <div style="text-align:left">
+      <label for="orgin"><b>ORGIN:<select name="orgin">{% for i in o %}
+    <option id=orgin value="{{i.id}}">{{i.orgin}}</option>
+    {% endfor %}
+    </select><br><br></b></label>
+      <div class="form-group">
+      <div style="text-align:left">
+      <label for="destination"><b>DESTINATION:<select name="destination">{% for i in d %}
+    <option id=destination value="{{i.id}}">{{i.destination}}</option>
+    {% endfor %}
+    </select><br><br></b></label>
+      </div></div>
+<div class="form-group">
+      <div style="text-align:left">
+      <label for="ddate"><b>DEPARTURE DATE:</b></label>
+      <input type="date" id="ddate" name="ddate" class="form-control"  placeholder="Departure Date">
+      </div></div>
+          <input type="submit" name="submit" value="Search">
+    </div>
+</form>
+</body>
+</html>

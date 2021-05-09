@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django . http import HttpResponse
-from datetime import date
+from datetime import date, datetime, timedelta
 from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment
 def home(request):
     return render(request,'home.html')
@@ -71,19 +71,58 @@ def addfschedule(request):
     des = request.POST['destination']
     orgin = Orgin.objects.get(id= org)
     destination = Destination.objects.get(id=des)
-    ddate = request.POST['ddate']
     dtime = request.POST['dtime']
-    adate = request.POST['adate']
-    atime = request.POST['atime']
+    htime=request.POST['htime']
+    mtime=request.POST['mtime']
     amount = request.POST['amount']
-    camount=int(amount)-300
-    iamount=int(amount)-500
-    wsamount=int(amount)+500
+    mon = request.POST.get('mon')
+    tue = request.POST.get('tue')
+    wed = request.POST.get('wed')
+    thu = request.POST.get('thu')
+    fri = request.POST.get('fri')
+    sat = request.POST.get('sat')
+    sun = request.POST.get('sun')
+    camount =int(amount)-300
+    iamount =int(amount)-500
+    wsamount =int(amount)+500
     bcamount =int(amount)+2000
     weight = request.POST['weight']
-    data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, ddate=ddate, dtime=dtime, adate=adate,
-                             atime=atime,amount=amount,camount=camount,iamount=iamount, wsamount=wsamount,bcamount=bcamount,weight=weight)
-    data.save()
+
+    if mon == '0':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                             htime=htime,mtime=mtime,amount=amount,camount=camount,iamount=iamount, wsamount=wsamount,bcamount=bcamount,weight=weight,dday="Mon")
+        data.save()
+    if tue == '1':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                             htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                             wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Tue")
+        data.save()
+    if wed == '2':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                             htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                             wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Wed")
+        data.save()
+    if thu == '3':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                             htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                             wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Thu")
+        data.save()
+    if fri == '4':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                             htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                             wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Fri")
+        data.save()
+    if sat == '5':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                             htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                             wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Sat")
+        data.save()
+    if sun == '6':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                             htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                             wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Sun")
+        data.save()
+
     return render(request,'addflightschedule.html')
 
 def addflightrate(request):
@@ -107,7 +146,7 @@ def placereg(request):
     data.save()
     return render(request,'addplace.html')
 def adddistrict(request):
-    data=State.objects.all()
+    data = State.objects.all()
     return render(request,'adddistrict.html',{'d':data})
 def districtreg(request):
     name = request.POST['name']
@@ -179,22 +218,68 @@ def update(request):
     data = Addflightname.objects.all()
     return render(request, 'showflightname.html', {'data': data})
 def editflightschedule(request):
-    id=request.POST['id']
-    data=Addflightschedule.objects.get(id=id)
-    return render(request,'editflightschedule.html',{'d':data})
+    id = request.POST['i.id']
+    data = Addflightschedule.objects.get(id=id)
+    return render(request, 'editflightschedule.html', {'data': data})
 def updateflightschedule(request):
     id=request.POST['id']
-    d=Addflightschedule.objects.get(id=id)
-    d.fname = request.POST['fname']
-    d.orgin.orgin = request.POST['orgin']
-    d.destination.destination = request.POST['destination']
-    d.ddate = request.POST['ddate']
-    d.dtime = request.POST['dtime']
-    d.adate = request.POST['adate']
-    d.atime = request.POST['atime']
-    d.save()
+    i=Addflightschedule.objects.get(id=id)
+    i.fname = request.POST['fname']
+    i.orgin.orgin = request.POST['orgin']
+    i.destination.destination = request.POST['destination']
+    i.dday = request.POST['dday']
+    i.dtime = request.POST['dtime']
+    i.htime = request.POST['htime']
+    i.mtime = request.POST['mtime']
+    i.amount = request.POST['amount']
+    i.mon = request.POST['mon']
+    i.tue = request.POST['tue']
+    i.wed = request.POST['wed']
+    i.thu = request.POST['thu']
+    i.fri = request.POST['fri']
+    i.sat = request.POST['sat']
+    i.sun = request.POST['sun']
+    weight = request.POST['weight']
+
+    if mon == '0':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                                 htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                                 wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Mon")
+        data.save()
+    if tue == '1':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                                 htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                                 wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Tue")
+        data.save()
+    if wed == '2':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                                 htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                                 wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Wed")
+        data.save()
+    if thu == '3':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                                 htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                                 wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Thu")
+        data.save()
+    if fri == '4':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                                 htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                                 wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Fri")
+        data.save()
+    if sat == '5':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                                 htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                                 wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Sat")
+        data.save()
+    if sun == '6':
+        data = Addflightschedule(addflightnameid=instance, orgin=orgin, destination=destination, dtime=dtime,
+                                 htime=htime, mtime=mtime, amount=amount, camount=camount, iamount=iamount,
+                                 wsamount=wsamount, bcamount=bcamount, weight=weight, dday="Sun")
+        data.save()
+
+
     data = Addflightschedule.objects.all()
-    return render(request, 'showflightschedule.html', {'d': data})
+    return render(request, 'showflightschedule.html', {'i': d})
 def editaddon(request):
     id=request.POST['id']
     data=Addaddon.objects.get(id=id)
@@ -309,4 +394,31 @@ def payment(request):
     user = request.session['user']
     Payment.objects.filter(userid=user).update(status=1)
     return HttpResponse("payment Successes")
+def searchflight(request):
+    data1 = Orgin.objects.all()
+    data2 = Destination.objects.all()
+    return render(request, 'searchflight.html', {'d': data2, 'o': data1})
+def fsearch(request):
+    org= request.POST['orgin']
+    des = request.POST['destination']
+    ddate = request.POST['ddate']
+    sdate = datetime.strptime( ddate, '%Y-%m-%d')
+    dayno = sdate.weekday()
+    if dayno == 0:
+        wday = 'Mon'
+    if dayno == 1:
+        wday = 'Tue'
+    if dayno == 2:
+        wday = 'Wed'
+    if dayno == 3:
+        wday = 'Thu'
+    if dayno == 4:
+        wday = 'Fri'
+    if dayno == 5:
+        wday = 'Sat'
+    if dayno == 6:
+        wday = 'Sun'
+    data = Addflightschedule.objects.filter(orgin=org, destination=des, dday=wday)
+    return render(request, 'availabileflights.html', {'d':data, 'ddate':ddate})
+
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:format="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,65 +7,111 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+#t02 {
+ border-collapse: collapse;
+  color: white;
+}
+</style>
     <title>addflightschedule</title>
 </head>
 <body>
+
 <div style="text-align:center">
 <div class="container p-3 my-3  text-white" style="background-color:#009999;">
 <center><h1>Add Flightschedule</h1></center>
     </div></div>
-<form action="addfschedule" method="post">
+<form action="addfschedule" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container-sm border"><br>
-<div class="container">
-<div class="col" style="background-color:white;">
-    <div class="form-group">
-      <div style="text-align:left">
-      <label for="fname"><b>FLIGHT NAME:<select name="id">{% for i in data %}
-    <option id=fname value="{{i.id}}">{{i.fname}}</option>
-    {% endfor %}
-    </select><br><br></b></label>
-      </div></div>
-   <div class="form-group">
-      <div style="text-align:left">
-      <label for="orgin"><b>ORGIN:<select name="id">{% for i in d %}
-    <option id=orgin value="{{i.id}}">{{i.orgin}}</option>
-    {% endfor %}
-    </select><br><br></b></label>
-      <div class="form-group">
-      <div style="text-align:left">
-      <label for="destination"><b>DESTINATION:<select name="id">{% for i in d %}
+        <table id="t01" class="center">
+    <tr>
+        <th>Flight Name</th>
+        <th>Orgin</th>
+        <th>Destination</th>
+
+        <th>Departure Time</th>
+
+        <th>Duration <br>(HH:MM)</th>
+        <th>Basic Amount For One Seat</th>
+        <th>Weight Can Carry</th>
+        <th>M</th>
+        <th>T</th>
+        <th>W</th>
+        <th>T</th>
+        <th>F</th>
+        <th>S</th>
+        <th>S</th>
+    </tr>
+            <tr>
+        <td>
+            <label for="fname"><b><select name="id">{% for i in data %}
+                <option id=fname value="{{i.id}}">{{i.fname}}</option>
+                {% endfor %}
+            </select></label>
+        </td>
+        <td>
+            <label for="orgin"><b><select name="orgin">{% for i in o %}
+                <option id=orgin value="{{i.id}}">{{i.orgin}}</option>
+                {% endfor %}
+            </select></label>
+        </td>
+        <td><label for="destination"><b><select name="destination">{% for i in d %}
     <option id=destination value="{{i.id}}">{{i.destination}}</option>
     {% endfor %}
-    </select><br><br></b></label>
-      </div></div>
-<div class="form-group">
-      <div style="text-align:left">
-      <label for="ddate"><b>DEPARTURE DATE:</b></label>
-      <input type="date" id="ddate" name="ddate" class="form-control"  placeholder="Departure Date">
-      </div></div>
- <div class="form-group">
-      <div style="text-align:left">
-      <label for="dtime"><b>DEPARTURE TIME:</b></label>
-      <input type="time" id="dtime" name="dtime" class="form-control"  placeholder="Departure Time">
-      </div></div>
-  <div class="form-group">
-      <div style="text-align:left">
-      <label for="adate"><b>ARRIVAL DATE:</b></label>
-      <input type="date" id="adate" name="adate" class="form-control"  placeholder="Arrival Date">
-      </div></div>
-   <div class="form-group">
-      <div style="text-align:left">
-      <label for="atime"><b>ARRIVAL TIME:</b></label>
-      <input type="time" id="atime" name="atime" class="form-control"  placeholder="Arrival Time">
-      </div></div>
-    <div class="form-group">
-      <div style="text-align:left">
-      <label for="name"><b>BASIC AMOUNT FOR ONE SEAT:</b></label>
-      <input type="text" id="amount" name="amount" class="form-control"  placeholder="Enter flight rate">
-      </div></div>
-    <input type="submit" name="submit" value="Add">
-    </div>
+    </select></label></td>
+
+        <td><input type="time" id="dtime" name="dtime" class="form-control"  placeholder="Departure Time"></td>
+<td>
+    <table id="t02">
+        <tr>
+            <div class="row">
+                <div class="input-group" style="width: 49%;">
+                            <input type="text" id="htime"  name="htime" class="form-control"  placeholder="HH">
+                        </div>
+                        <div class="input-group" style="width: 49%;">
+                            <input type="text" id="mtime" name="mtime" class="form-control"  placeholder="MM">
+                        </div>
+            </div>
+        </tr>
+    </table>
+</td>
+         <td><input type="text" id="amount" name="amount" class="form-control"></td>
+        <td><input type="text" id="weight" name="weight" class="form-control" ></td>
+        <td><input type="checkbox" id="mon" name="mon" value="0" ></td>
+        <td><input type="checkbox" id="tue" name="tue" value="1" ></td>
+        <td><input type="checkbox" id="wed" name="wed" value="2" ></td>
+        <td><input type="checkbox" id="thu" name="thu" value="3" ></td>
+        <td><input type="checkbox" id="fri" name="fri" value="4" ></td>
+        <td><input type="checkbox" id="sat" name="sat" value="5" ></td>
+        <td><input type="checkbox" id="sun" name="sun" value="6" ></td>
+    </tr>
+        </table>
+<input type="submit" name="submit" value="Add">
 </form>
 </body>
 </html>

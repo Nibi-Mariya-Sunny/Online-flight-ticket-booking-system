@@ -59,4 +59,6 @@ urlpatterns = [
     path('remove', views.remove, name='remove'),
     path('confirmbooking', views.confirmbooking, name='confirmbooking'),
     path('payment', views.payment, name='payment'),
+    path('searchflight', views.searchflight, name='searchflight'),
+    path('fsearch', views.fsearch, name='fsearch'),
 ]
