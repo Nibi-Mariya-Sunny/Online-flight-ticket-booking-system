@@ -36,30 +36,39 @@ th, td {
         <th>Departure Time</th>
         <th>Arrival Date</th>
         <th>Arrival Time</th>
-        <th>Book Now</th>
-        <th>View More</th>
+        <th>Basic Amount</th>
+        <th>Child Amount</th>
+        <th>Infant Amount</th>
+        <th>Business Class Amount</th>
+        <th>Window Seat Amount</th>
+        <th>Weight Can Carry</th>
+        <th>Edit Flight Name</th>
     </tr>
     <tr>
         {% for i in d %}
         <form action="booking" method="post">
             {% csrf_token %}
-        <td>{{i.fname}}</td>
-        <td>{{i.orgin}}</td>
-        <td>{{i.destination}}</td>
-        <td>{{i.ddate}}</td>
+        <td>{{i.addflightnameid.fname}}</td>
+        <td>{{i.orgin.orgin}}</td>
+        <td>{{i.destination.destination}}</td>
+        <td>{{ddate}}</td>
         <td>{{i.dtime}}</td>
         <td>{{i.adate}}</td>
         <td>{{i.atime}}</td>
+            <td>{{i.amount}}</td>
+             <td>{{i.camount}}</td>
+             <td>{{i.iamount}}</td>
+            <td>{{i.bcamount}}</td>
+            <td>{{i.wsamount}}</td>
+            <td>{{i.weight}}</td>
         <input type="hidden" name="id" value="{{i.id}}">
         <td><input type="submit" value="Book Now"></td>
-            <input type="hidden" name="id" value="{{i.id}}">
-        <td><input type="submit" value="View More"></td>
         </form>
     </tr>
     {% endfor %}
 </table>
 <div style="text-align:center">
-    <br><a href="Userhome"><input type="submit" name="Userhome" value="HOME"></a>
+    <br><a href="Userhomehome"><input type="submit" name="userhome" value="HOME"></a>
     </div>
 </body>
 </html>

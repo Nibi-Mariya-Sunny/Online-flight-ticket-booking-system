@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django . http import HttpResponse
-from datetime import date, datetime, timedelta
+from datetime import date, datetime
+
 from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment
 def home(request):
     return render(request,'home.html')
@@ -399,6 +400,7 @@ def searchflight(request):
     data2 = Destination.objects.all()
     return render(request, 'searchflight.html', {'d': data2, 'o': data1})
 def fsearch(request):
+    '''import pdb;pdb.set_trace();'''
     org= request.POST['orgin']
     des = request.POST['destination']
     ddate = request.POST['ddate']
@@ -419,6 +421,9 @@ def fsearch(request):
     if dayno == 6:
         wday = 'Sun'
     data = Addflightschedule.objects.filter(orgin=org, destination=des, dday=wday)
-    return render(request, 'availabileflights.html', {'d':data, 'ddate':ddate})
+    for x in data:
+        print(x)
+        td = datetime.strptime(ddate, '%Y-%m-%d')
+    return render(request, 'availabileflights.html', {'d': data, 'ddate': ddate})
 
 

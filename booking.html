@@ -1,75 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>booking</title>
+        <script type="text/javascript">
+        function addRow(tableID)
+        {
+            var table = document.getElementById(tableID);
+            var rowCount = document.getElementById(tableID).rows.length;
+            var col2 = ('<td><input type="text" name="fname" style="width: 100%"></td><td><input type="text" name="lname" style="width: 100%"></td><td><input type="date" name="dob" style="width: 100%"></td><td><input type="text" name="address" style="width: 100%"></td>');
+            table.insertRow(-1).innerHTML = '<td>' + rowCount + '</td>' + col2;
+        }
+        </script>
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+ table{
+counter-reset:rowNumber;
+}
+table tr: not(:first-child){
+display:table-cell;
+counter-increment:rowNumber;
+content:counter(rowNumber)".";
+padding-right:0.3em;
+text-align:right;
+}
+</style>
 </head>
 <body>
-<div style="text-align:center">
-<div class="container p-3 my-3  text-white" style="background-color:#009999;">
-<center><h1>Booking</h1></center>
-    </div></div>
-<form action="bookingreg" method="post">
-    {% csrf_token %}
-    <div class="container-sm border"><br>
-<div class="container">
-<div class="col" style="background-color:white;">
-    <div class="form-group">
-      <div style="text-align:left">
-      <label for="name"><b>NAME:</b></label>
-    <input type="text" id="name" name="name" class="form-control"  placeholder="Name">
-      </div></div>
-    <div class="form-group">
-      <div style="text-align:left">
-      <label for="address"><b>ADDRESS:</b></label>
-      <input type="address" id="address" name="address" class="form-control"  placeholder="Address">
-      </div></div>
-    <div class="form-group">
-      <div style="text-align:left">
-      <label for="phno"><b>CONTACT:</b></label>
-      <input type="text" id="phno" name="phno" class="form-control"  placeholder="Contact Number">
-      </div></div>
-    <div class="form-group">
-      <div style="text-align:left">
-      <label for="email"><b>EMAIL:</b></label>
-      <input type="text" id="email" name="email" class="form-control"  placeholder="Email">
-      </div></div>
-    </div>
+   <TITLE> Add/Remove dynamic rows in HTML table </TITLE>
 
-<center><h1>Flight Details</h1></center>
-<table>
+<center><h1>Booking</h1></center>
+<center>
+<table id="t01" class="center">
     <tr>
-        <th>Flight Name</th>
-        <th>Orgin</th>
-        <th>Destination</th>
-        <th>Departure Date</th>
-        <th>Departure Time</th>
-        <th>Arrival Date</th>
-        <th>Arrival Time</th>
-        <th>Business Class Amount</th>
+        <th style="width: 2%">Slno</th>
+        <th style="width: 20%">First Name</th>
+        <th style="width: 20%">Last Name</th>
+        <th style="width: 15%">Dob</th>
+        <th style="width: 43%">Address</th>
+
     </tr>
     <tr>
-        <td>{{data.addflightnameid.fname}}</td>
-        <td>{{data.orgin.orgin}}</td>
-        <td>{{data.destination.destination}}</td>
-        <td>{{data.ddate}}</td>
-        <td>{{data.dtime}}</td>
-        <td>{{data.adate}}</td>
-        <td>{{data.atime}}</td>
-        <td>{{data.bcamount}}</td>
-    <input type="hidden" value="{{data.id}}"name="id">
-     <td><input type="submit" value="Book Now"></td>
-        <input type="hidden" value="{{data.id}}"name="id">
-     <td><input type="submit" value="Add More"></td>
-
+       <td id="slNo">1</td>
+        <td><input type="text" name="fname" style="width: 100%"></td>
+        <td><input type="text" name="lname" style="width: 100%"></td>
+        <td><input type="date" name="dob" style="width: 100%"></td>
+        <td><input type="text" name="address" style="width: 100%"></td>
     </tr>
 
 </table>
-      </form>
+    <div style="text-align:center">
+        <input type="button" value="Add Passenger" onclick="addRow('t01')">
+        <a href="adminhome"><input type="submit" name="adminhome" value="HOME"></a>
+    </div>
+</center>
 </body>
 </html>
