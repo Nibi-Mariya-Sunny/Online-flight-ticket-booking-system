@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django . http import HttpResponse
 from datetime import date, datetime
-
+from requests_html import HTMLSession
+import certifi
+import lxml.html
+import urllib.request
 from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment
 def home(request):
     return render(request,'home.html')
@@ -347,8 +350,9 @@ def showclasstype(request):
     request.session['fid']=fid
     return render(request,'showclasstype.html')
 def booking(request):
-    data = Addflightschedule.objects.get(id=request.session['fid'])
-    return render(request,'booking.html',{'data':data})
+    id = request.POST['id']
+    data = Addflightschedule.objects.get(id=id)
+    return render(request,'booking.html',{'data': data})
 def bookingreg(request):
     if request.method=='POST':
         addflightscheduleid = request.POST['id']

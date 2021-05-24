@@ -24,8 +24,13 @@ th, td {
   color: white;
 }
 </style>
+    <script type="text/javascript">
+       var htmlcontent = document.getElementById('aFlights').innerHTML;
+</script>
 </head>
 <body>
+
+<div id='aFlights'>
 <center><h1>Flight Schedule</h1></center>
 <table id="t01" class="center">
     <tr>
@@ -34,8 +39,7 @@ th, td {
         <th>Destination</th>
         <th>Departure Date</th>
         <th>Departure Time</th>
-        <th>Arrival Date</th>
-        <th>Arrival Time</th>
+        <th>Duration(HH:MM)</th>
         <th>Basic Amount</th>
         <th>Child Amount</th>
         <th>Infant Amount</th>
@@ -46,27 +50,37 @@ th, td {
     </tr>
     <tr>
         {% for i in d %}
-        <form action="booking" method="post">
+        <form action="booking" method="post" enctype="multipart/form-data">
             {% csrf_token %}
         <td>{{i.addflightnameid.fname}}</td>
         <td>{{i.orgin.orgin}}</td>
         <td>{{i.destination.destination}}</td>
         <td>{{ddate}}</td>
         <td>{{i.dtime}}</td>
-        <td>{{i.adate}}</td>
-        <td>{{i.atime}}</td>
-            <td>{{i.amount}}</td>
-             <td>{{i.camount}}</td>
-             <td>{{i.iamount}}</td>
-            <td>{{i.bcamount}}</td>
-            <td>{{i.wsamount}}</td>
-            <td>{{i.weight}}</td>
-        <input type="hidden" name="id" value="{{i.id}}">
-        <td><input type="submit" value="Book Now"></td>
-        </form>
+        <td>{{i.htime}} : {{i.mtime}}</td>
+        <td>{{i.amount}}</td>
+        <td>{{i.camount}}</td>
+        <td>{{i.iamount}}</td>
+        <td>{{i.bcamount}}</td>
+        <td>{{i.wsamount}}</td>
+        <td>{{i.weight}}</td>
+        <td>
+            <form action="/action_page.php">
+                  <label for="bclass">Class:</label>
+                  <select name="bclass" id="bclass">
+                    <option value="Economy">Economy</option>
+                    <option value="Business">Business</option>
+                  </select>
+                  <br><br>
+                <input type="submit" value="Book Now">
+            </form>
+        </td>
+            <input type="hidden" name="id" value="{{i.id}}">
+
     </tr>
     {% endfor %}
 </table>
+</div>
 <div style="text-align:center">
     <br><a href="Userhomehome"><input type="submit" name="userhome" value="HOME"></a>
     </div>
