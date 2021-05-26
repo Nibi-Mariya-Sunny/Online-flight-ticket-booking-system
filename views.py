@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django . http import HttpResponse
 from datetime import date, datetime
-from requests_html import HTMLSession
-import certifi
-import lxml.html
-import urllib.request
+from bs4 import BeautifulSoup
+import os
+
 from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment
 def home(request):
     return render(request,'home.html')
@@ -334,8 +333,10 @@ def updatemyprofile(request):
     data = Register.objects.filter(email=email)
     return render(request,'myprofile.html', {'data': data})
 def availabileflights(request):
-    today=date.today()
-    data = Addflightschedule.objects.filter(ddate__gt=today).all
+    '''today=date.today()'''
+    '''data = Addflightschedule.objects.filter(ddate__gt=today).all'''
+    id = request.POST['id']
+    data = Addflightschedule.objects.get(id=id)
     return render(request,'availabileflights.html',{'d':data})
 def showavailabileflights(request):
     '''today=date.today()'''
@@ -350,13 +351,17 @@ def showclasstype(request):
     request.session['fid']=fid
     return render(request,'showclasstype.html')
 def booking(request):
-    id = request.POST['id']
+    test_file = open(os.getcwd() + "/template/availabileflights.html")
+    soup = BeautifulSoup(test_file)
+    x = (soup.find(id="fselect").get_text())
+    '''   *********************** '''
+    id = request.POST['aid']
     data = Addflightschedule.objects.get(id=id)
     return render(request,'booking.html',{'data': data})
 def bookingreg(request):
     if request.method=='POST':
         addflightscheduleid = request.POST['id']
-        instance = Addflightschedule.objects.get(id=addflightscheduleid)
+        instance = Addflightschedule.objects.get(fid=addflightscheduleid)
         name=request.POST['name']
         address = request.POST['address']
         phno= request.POST['phno']

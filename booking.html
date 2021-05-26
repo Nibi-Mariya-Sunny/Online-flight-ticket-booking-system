@@ -10,6 +10,7 @@
             table.insertRow(-1).innerHTML = '<td>' + rowCount + '</td>' + col2;
         }
         </script>
+
 <style>
 table {
   width:100%;
@@ -45,13 +46,29 @@ text-align:right;
 </style>
 </head>
 <body>
-   <TITLE> Add/Remove dynamic rows in HTML table </TITLE>
-
 <center><h1>Booking</h1></center>
 <center>
+    <table border="1">
+    <tr>
+        <th>Flight Name</th>
+        <th>Orgin</th>
+        <th>Destination</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+
+    </tr>
+    <tr>
+        <td>{{data.addflightnameid.fname}}</td>
+        <td>{{data.orgin.orgin}}</td>
+        <td>{{data.destination.destination}}</td>
+        <td>{{ddate}}</td>
+        <td>{{data.dtime}}</td>
+
+    </tr>
+
 <table id="t01" class="center">
     <tr>
-        <th style="width: 2%">Slno</th>
+        <br><br><br><th style="width: 2%">Slno</th>
         <th style="width: 20%">First Name</th>
         <th style="width: 20%">Last Name</th>
         <th style="width: 15%">Dob</th>
