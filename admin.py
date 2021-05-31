@@ -1,0 +1,16 @@
+from django.contrib import admin
+from .models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment,Bclass,Eclass
+admin.site.register(Register)
+admin.site.register(Login)
+admin.site.register(Addflightname)
+admin.site.register(Orgin)
+admin.site.register(Destination)
+admin.site.register(District)
+admin.site.register(Flightrate)
+admin.site.register(Addflightschedule)
+admin.site.register(Addaddon)
+admin.site.register(Addpackage)
+admin.site.register(Booking)
+admin.site.register(Payment)
+admin.site.register(Bclass)
+admin.site.register(Eclass)

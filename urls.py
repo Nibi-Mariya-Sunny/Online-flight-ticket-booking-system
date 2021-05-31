@@ -61,4 +61,5 @@ urlpatterns = [
     path('payment', views.payment, name='payment'),
     path('searchflight', views.searchflight, name='searchflight'),
     path('fsearch', views.fsearch, name='fsearch'),
+    path('seatselection', views.seatselection, name='seatselection'),
 ]

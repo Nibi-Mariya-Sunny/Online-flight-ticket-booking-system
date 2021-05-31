@@ -23,17 +23,49 @@ th, td {
   background-color: black;
   color: white;
 }
+
+ #t01 tr:not(:first-child){
+   cursor: pointer;transition: all .25s ease-in-out;
+   }
+ #t01 tr:not(:first-child):hover{background-color: #ADD8E6;}
 </style>
     <script type="text/javascript">
-       var htmlcontent = document.getElementById('aFlights').innerHTML;
-</script>
+        var htmlcontent = document.getElementById('aFlights').innerHTML;
+        function showalert(){
+            var getSelectedValue = document.querySelector('input[name="fselect"]:checked');
+            var getSelectedValue1 = document.querySelector('input[name="forgin"]');
+            var getSelectedValue2 = document.querySelector('input[name="fdtime"]');
+            if(getSelectedValue != null) {
+                document.getElementById("disp").innerHTML
+                    = getSelectedValue.value;
+                document.getElementById("error").innerHTML
+                    = getSelectedValue2.value
+                    + " id is selected";
+            }
+            else {
+                document.getElementById("error").innerHTML
+                    = "*You have not selected any flights";
+            }
+        }
+
+         var table = document.getElementById('t01');
+
+                {% for i in d %}
+                {
+                    table.rows[i].onclick = function()
+                    {
+                         document.getElementById("disp").value = this.cells[1].innerHTML + " fname is selected";
+                    };
+                }
+                  {% endfor %}
+    </script>
 </head>
 <body>
-
 <div id='aFlights'>
 <center><h1>Flight Schedule</h1></center>
 <table id="t01" class="center">
     <tr>
+        <th>Id</th>
         <th>Flight Name</th>
         <th>Orgin</th>
         <th>Destination</th>
@@ -46,17 +78,20 @@ th, td {
         <th>Business Class Amount</th>
         <th>Window Seat Amount</th>
         <th>Weight Can Carry</th>
-        <th>Edit Flight Name</th>
     </tr>
     <tr>
         {% for i in d %}
         <form action="booking" method="post" enctype="multipart/form-data">
             {% csrf_token %}
+        <td><input type="radio" id=fselect name="fselect" value={{i.id}} onclick="showalert()">
+        <br>{{i.id}}
+        <input type="hidden" id=aid name="aid" value={{i.id}}>
+        </td>
         <td>{{i.addflightnameid.fname}}</td>
-        <td>{{i.orgin.orgin}}</td>
+        <td><input type="hidden" id="forgin" name="forgin" value={{i.orgin.orgin}}>{{i.orgin.orgin}}</td>
         <td>{{i.destination.destination}}</td>
-        <td>{{ddate}}</td>
-        <td>{{i.dtime}}</td>
+        <td><input type="hidden" id="fddate" name="fddate" value={{ddate}}>{{ddate}}</td>
+        <td><input type="hidden" id="fdtime" name="fdtime" value={{i.dtime}}>{{i.dtime}}</td>
         <td>{{i.htime}} : {{i.mtime}}</td>
         <td>{{i.amount}}</td>
         <td>{{i.camount}}</td>
@@ -64,25 +99,26 @@ th, td {
         <td>{{i.bcamount}}</td>
         <td>{{i.wsamount}}</td>
         <td>{{i.weight}}</td>
-        <td>
-            <form action="/action_page.php">
-                  <label for="bclass">Class:</label>
-                  <select name="bclass" id="bclass">
+        <!--<td>
+                   <select name="bclass" id="bclass">
                     <option value="Economy">Economy</option>
                     <option value="Business">Business</option>
                   </select>
                   <br><br>
-                <input type="submit" value="Book Now">
-            </form>
-        </td>
-            <input type="hidden" name="id" value="{{i.id}}">
+
+        </td>-->
 
     </tr>
     {% endfor %}
 </table>
 </div>
 <div style="text-align:center">
+   <br><br> <input type="submit" value="Book Now">
+</div>
+<div style="text-align:center">
     <br><a href="Userhomehome"><input type="submit" name="userhome" value="HOME"></a>
-    </div>
+</div>
+<h3 id="disp" style= "color:green"> </h3>
+<h4 id="error" style= "color:red"> </h4>
 </body>
 </html>

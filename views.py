@@ -4,7 +4,7 @@ from datetime import date, datetime
 from bs4 import BeautifulSoup
 import os
 
-from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment
+from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment,Bclass,Eclass
 def home(request):
     return render(request,'home.html')
 def login(request):
@@ -351,13 +351,12 @@ def showclasstype(request):
     request.session['fid']=fid
     return render(request,'showclasstype.html')
 def booking(request):
-    test_file = open(os.getcwd() + "/template/availabileflights.html")
-    soup = BeautifulSoup(test_file)
-    x = (soup.find(id="fselect").get_text())
-    '''   *********************** '''
-    id = request.POST['aid']
+    id = request.POST['fselect']
+    fddate = request.POST['fddate']
+    print(id)
+    print(fddate)
     data = Addflightschedule.objects.get(id=id)
-    return render(request,'booking.html',{'data': data})
+    return render(request,'booking.html',{'data': data, 'fddate': fddate})
 def bookingreg(request):
     if request.method=='POST':
         addflightscheduleid = request.POST['id']
@@ -434,5 +433,11 @@ def fsearch(request):
         print(x)
         td = datetime.strptime(ddate, '%Y-%m-%d')
     return render(request, 'availabileflights.html', {'d': data, 'ddate': ddate})
-
-
+def seatselection(request):
+    Bdata = Bclass.objects.all()
+    Edata = Eclass.objects.all()
+    return render(request, 'seatselection.html', {'Bdata': Bdata, 'Edata': Edata})
+def seatreg(request):
+    Bdata = Bclass.objects.all()
+    Edata = Eclass.objects.all()
+    return render(request, 'Userhome.html', {'Bdata': Bdata, 'Edata': Edata})

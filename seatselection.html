@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+
+<head>
+ <style>
+ div {
+    background-image=: url(C:\Users\HP\PycharmProjects\flightticketbooking\flightbooking\static\Flight Layout.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: auto 200%;
+}
+</style>
+</head>
+<div height="100%">
+  <table id="dummy">
+  <tr>
+  <td width="43%"></td>
+   <td width="13%">
+  <table id="t01" class="center">
+      <tr>
+          <th align="center">A</th>
+          <th align="center">C</th>
+          <th align="center">D</th>
+          <th align="center">F</th>
+      </tr>
+   <tr>
+         {% for i in Bdata %}
+          <form action="booking" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+   </tr>
+      {% endfor %}
+  </table>
+ <table id="t02" class="center">
+     <tr>
+          <th align="center">A</th>
+          <th align="center">B</th>
+          <th align="center">C</th>
+          <th align="center">D</th>
+          <th align="center">E</th>
+          <th align="center">F</th>
+      </tr>
+ <tr>
+       {% for i in Edata %}
+        <form action="booking" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+         <td align="center"><img src="{% static 'seat.png' %}" width="50%" height=auto></td>
+ </tr>
+    {% endfor %}
+</table>
+   </td>
+   <td width="43%"></td>
+   </tr>
+   </table>
+</div>
+ </body>
+
+</html>
