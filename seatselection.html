@@ -5,26 +5,74 @@
 <head>
 <!--     <link rel="stylesheet" type="text/css" href="{% static 'css\seat.css' %}"> -->
    <link rel="stylesheet" type="text/css" href="{% static 'css\seat.css' %}">
-  </head>
+</head>
 <body>
+<style>
+table {
+  width:100%;
+}
+  #t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+ table{
+counter-reset:rowNumber;
+}
+table tr: not(:first-child){
+display:table-cell;
+counter-increment:rowNumber;
+content:counter(rowNumber)".";
+padding-right:0.3em;
+text-align:right;
+
+</style>
+<script>
+  function alertFunction() {
+  var x = document.getElementById("Bdata");
+  var i;
+  var txt = "";
+  for (i = 0; i < x.length; i++) {
+  txt = txt + x.elements[i] + "<br>";
+  }
+    if (document.getElementById("1A_1").value == 0){
+            document.getElementById("1A").disabled = true;
+         }elseif{
+         document.getElementById("1_A1").value = {{i}};
+
+         }
+       }
+  window.onload = alertFunction;
+</script>
 <div class="plane">
+
+  <input type="hidden" id="Bdata" value="{{Bdata}}">
   <div class="cockpit">
     <h1>Please select a seat</h1>
   </div>
-  <div class="exit exit--front fuselage">  </div>
+  <div class="exit exit--front fuselage">
+  </div>
   <ol class="cabin fuselage">
+    <br>
+    <Bclass class="bclass">
     <li class="row row--1">
       <ol class="seats" type="A">
         <li class="seat">
           <input type="checkbox" class = "cbox" id="1A" />
-          <label class="label1" for="1A">1A</label>
+          <input type="hidden" id="1_A1" value={{1.a}} />
+          <label class="label1" for="1_A1">{{i.a}</label>
         </li>
         <li class="seat">
-          <input type="checkbox" class = "cbox" id="1B" />
+          <input type="checkbox" class = "cbox" id="1B"/>
           <label class="label1" for="1B">1B</label>
         </li>
         <li class="seat">
-          <input type="checkbox" class = "cbox" id="1C" />
+          <input type="checkbox" class = "cbox" id="1C"/>
           <label class="label1" for="1C">1C</label>
         </li>
         <li class="seat">
@@ -97,6 +145,8 @@
         </li>
       </ol>
     </li>
+    <br>
+    </Bclass>
     <li class="row row--4">
       <ol class="seats" type="A">
         <li class="seat">
@@ -297,6 +347,20 @@
   <div class="exit exit--back fuselage">
 
   </div>
+</div>
+<div>
+  <table id="t01">
+    <tr>
+      <th>Wheelchair</th>
+      <th>Assistent</th>
+      <th>Child Seat</th>
+    </tr>
+    <tr>
+        <td><input type="checkbox" id="ad1" name="ad1" value="ad1" ></td>
+        <td><input type="checkbox" id="ad2" name="ad2" value="ad2" ></td>
+        <td><input type="checkbox" id="ad3" name="ad3" value="ad3" ></td>
+    </tr>
+  </table>
 </div>
 </body>
 </html>
