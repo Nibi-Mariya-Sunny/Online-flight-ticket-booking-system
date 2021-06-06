@@ -435,9 +435,15 @@ def fsearch(request):
     return render(request, 'availabileflights.html', {'d': data, 'ddate': ddate})
 def seatselection(request):
     Bdata = Bclass.objects.all()
+    for x in Bdata:
+        print(x)
     Edata = Eclass.objects.all()
     return render(request, 'seatselection.html', {'Bdata': Bdata, 'Edata': Edata})
 def seatreg(request):
     Bdata = Bclass.objects.all()
     Edata = Eclass.objects.all()
+    return render(request, 'Userhome.html', {'Bdata': Bdata, 'Edata': Edata})
+def seatConfirm(request):
+    b1 = request.session('B1')
+    print(b1)
     return render(request, 'Userhome.html', {'Bdata': Bdata, 'Edata': Edata})
