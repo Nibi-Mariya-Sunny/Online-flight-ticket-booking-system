@@ -86,6 +86,7 @@ class Bclass(models.Model):
     e3 = models.IntegerField()
     f3 = models.IntegerField()
 class Eclass(models.Model):
+    key = models.CharField(max_length=6)
     a4 = models.IntegerField()
     b4 = models.IntegerField()
     c4 = models.IntegerField()

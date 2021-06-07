@@ -4,7 +4,8 @@
 
 <head>
 <!--     <link rel="stylesheet" type="text/css" href="{% static 'css\seat.css' %}"> -->
-   <link rel="stylesheet" type="text/css" href="{% static 'css\seat.css' %}">
+<!--   <link rel="stylesheet" type="text/javascript" href="{% static 'jscript\seatselection.js' %}">  -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css\seat.css' %}">
 </head>
 <body>
 <style>
@@ -32,81 +33,31 @@ padding-right:0.3em;
 text-align:right;
 
 </style>
-<script>
-  function alertFunction() {
-    if (document.getElementById("A1").value == 1){ document.getElementById("1A").disabled = true;}
-    if (document.getElementById("B1").value == 1){ document.getElementById("1B").disabled = true;}
-    if (document.getElementById("C1").value == 1){ document.getElementById("1C").disabled = true;}
-    if (document.getElementById("D1").value == 1){ document.getElementById("1D").disabled = true;}
-    if (document.getElementById("E1").value == 1){ document.getElementById("1E").disabled = true;}
-    if (document.getElementById("F1").value == 1){ document.getElementById("1F").disabled = true;}
-    if (document.getElementById("A2").value == 1){ document.getElementById("2A").disabled = true;}
-    if (document.getElementById("B2").value == 1){ document.getElementById("2B").disabled = true;}
-    if (document.getElementById("C2").value == 1){ document.getElementById("2C").disabled = true;}
-    if (document.getElementById("D2").value == 1){ document.getElementById("2D").disabled = true;}
-    if (document.getElementById("E2").value == 1){ document.getElementById("2E").disabled = true;}
-    if (document.getElementById("F2").value == 1){ document.getElementById("2F").disabled = true;}
-    if (document.getElementById("A3").value == 1){ document.getElementById("3A").disabled = true;}
-    if (document.getElementById("B3").value == 1){ document.getElementById("3B").disabled = true;}
-    if (document.getElementById("C3").value == 1){ document.getElementById("3C").disabled = true;}
-    if (document.getElementById("D3").value == 1){ document.getElementById("3D").disabled = true;}
-    if (document.getElementById("E3").value == 1){ document.getElementById("3E").disabled = true;}
-    if (document.getElementById("F3").value == 1){ document.getElementById("3F").disabled = true;}
-    if (document.getElementById("A4").value == 1){ document.getElementById("4A").disabled = true;}
-    if (document.getElementById("B4").value == 1){ document.getElementById("4B").disabled = true;}
-    if (document.getElementById("C4").value == 1){ document.getElementById("4C").disabled = true;}
-    if (document.getElementById("D4").value == 1){ document.getElementById("4D").disabled = true;}
-    if (document.getElementById("E4").value == 1){ document.getElementById("4E").disabled = true;}
-    if (document.getElementById("F4").value == 1){ document.getElementById("4F").disabled = true;}
-    if (document.getElementById("A5").value == 1){ document.getElementById("5A").disabled = true;}
-    if (document.getElementById("B5").value == 1){ document.getElementById("5B").disabled = true;}
-    if (document.getElementById("C5").value == 1){ document.getElementById("5C").disabled = true;}
-    if (document.getElementById("D5").value == 1){ document.getElementById("5D").disabled = true;}
-    if (document.getElementById("E5").value == 1){ document.getElementById("5E").disabled = true;}
-    if (document.getElementById("F5").value == 1){ document.getElementById("5F").disabled = true;}
-    if (document.getElementById("A6").value == 1){ document.getElementById("6A").disabled = true;}
-    if (document.getElementById("B6").value == 1){ document.getElementById("6B").disabled = true;}
-    if (document.getElementById("C6").value == 1){ document.getElementById("6C").disabled = true;}
-    if (document.getElementById("D6").value == 1){ document.getElementById("6D").disabled = true;}
-    if (document.getElementById("E6").value == 1){ document.getElementById("6E").disabled = true;}
-    if (document.getElementById("F6").value == 1){ document.getElementById("6F").disabled = true;}
-    if (document.getElementById("A7").value == 1){ document.getElementById("7A").disabled = true;}
-    if (document.getElementById("B7").value == 1){ document.getElementById("7B").disabled = true;}
-    if (document.getElementById("C7").value == 1){ document.getElementById("7C").disabled = true;}
-    if (document.getElementById("D7").value == 1){ document.getElementById("7D").disabled = true;}
-    if (document.getElementById("E7").value == 1){ document.getElementById("7E").disabled = true;}
-    if (document.getElementById("F7").value == 1){ document.getElementById("7F").disabled = true;}
-    if (document.getElementById("A8").value == 1){ document.getElementById("8A").disabled = true;}
-    if (document.getElementById("B8").value == 1){ document.getElementById("8B").disabled = true;}
-    if (document.getElementById("C8").value == 1){ document.getElementById("8C").disabled = true;}
-    if (document.getElementById("D8").value == 1){ document.getElementById("8D").disabled = true;}
-    if (document.getElementById("E8").value == 1){ document.getElementById("8E").disabled = true;}
-    if (document.getElementById("F8").value == 1){ document.getElementById("8F").disabled = true;}
-    if (document.getElementById("A9").value == 1){ document.getElementById("9A").disabled = true;}
-    if (document.getElementById("B9").value == 1){ document.getElementById("9B").disabled = true;}
-    if (document.getElementById("C9").value == 1){ document.getElementById("9C").disabled = true;}
-    if (document.getElementById("D9").value == 1){ document.getElementById("9D").disabled = true;}
-    if (document.getElementById("E9").value == 1){ document.getElementById("9E").disabled = true;}
-    if (document.getElementById("F9").value == 1){ document.getElementById("9F").disabled = true;}
-    if (document.getElementById("A10").value == 1){ document.getElementById("10A").disabled = true;}
-    if (document.getElementById("B10").value == 1){ document.getElementById("10B").disabled = true;}
-    if (document.getElementById("C10").value == 1){ document.getElementById("10C").disabled = true;}
-    if (document.getElementById("D10").value == 1){ document.getElementById("10D").disabled = true;}
-    if (document.getElementById("E10").value == 1){ document.getElementById("10E").disabled = true;}
-    if (document.getElementById("F10").value == 1){ document.getElementById("10F").disabled = true;}
-       }
- window.onload = alertFunction;
- var call=function(elementId){
-    var x = document.getElementById(elementId).value;
-    alert(x);
-        if(x == 0){
-      document.getElementById(elementId).innerHTML = 1;
-      }
-     }
+<script src="{% static 'jscript\seatselection.js' %}">
 
 </script>
 <div class="plane">
+<center><h1>Booking</h1></center>
+<center>
+    <table border="1">
+    <tr>
+        <th>Flight Name</th>
+        <th>Orgin</th>
+        <th>Destination</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
 
+    </tr>
+    <tr>
+        <td>{{data.addflightnameid.fname}}</td>
+        <td>{{data.orgin.orgin}}</td>
+        <td>{{data.destination.destination}}</td>
+        <td>{{fddate}}</td>
+        <td>{{data.dtime}}</td>
+
+    </tr>
+    </table>
+</center>
   <div class="cockpit">
     <h1>Please select a seat</h1>
   </div>
@@ -114,40 +65,41 @@ text-align:right;
   </div>
   <ol class="cabin fuselage">
     <br>
-    {% for i in Bdata %}
     <form action="seatConfirm" method="post" enctype="multipart/form-data">
+    {% for i in Bdata %}
     {% csrf_token %}
+      <input type="hidden" id="fid" name="fid" value={{id}} />
     <Bclass class="bclass">
     <li class="row row--1">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A1" value={{i.a1}} />
-          <input type="checkbox" class = "cbox" id="1A" onclick="call('A1')" />
+          <input type="hidden" id="A1" name="A1" value={{i.a1}} />
+          <input type="checkbox" class = "cbox" id="1A" onclick="call('A1', '1A')" />
           <label class="label1" for="1A">1A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B1" value={{i.b1}} />
-          <input type="checkbox" class = "cbox" id="1B" onclick="call('B1')" />
+          <input type="hidden" id="B1" name="B1" value={{i.b1}} />
+          <input type="checkbox" class = "cbox" id="1B" onclick="call('B1', '1B')" />
           <label class="label1" for="1B">1B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C1" value={{i.c1}} />
-          <input type="checkbox" class = "cbox" id="1C"/>
+          <input type="hidden" id="C1" name="C1" value={{i.c1}} />
+          <input type="checkbox" class = "cbox" id="1C" onclick="call('C1', '1C')"/>
           <label class="label1" for="1C">1C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D1" value={{i.d1}} />
-          <input type="checkbox" class = "cbox" id="1D" />
+          <input type="hidden" id="D1" name="D1" value={{i.d1}} />
+          <input type="checkbox" class = "cbox" id="1D" onclick="call('D1', '1D')" />
           <label class="label1" for="1D">1D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E1" value={{i.e1}} />
-          <input type="checkbox" class = "cbox" id="1E" />
+          <input type="hidden" id="E1" name="E1" value={{i.e1}} />
+          <input type="checkbox" class = "cbox" id="1E" onclick="call('E1', '1E')"/>
           <label class="label1" for="1E">1E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="F1" value={{i.f1}} />
-          <input type="checkbox" class = "cbox" id="1F" />
+          <input type="hidden" id="F1" name="F1" value={{i.f1}} />
+          <input type="checkbox" class = "cbox" id="1F" onclick="call('F1', '1F')" />
           <label class="label1" for="1F">1F</label>
         </li>
       </ol>
@@ -155,33 +107,33 @@ text-align:right;
     <li class="row row--2">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A2" value={{i.a2}} />
-          <input type="checkbox" class = "cbox" id="2A" />
+          <input type="hidden" id="A2" name="A2" value={{i.a2}} />
+          <input type="checkbox" class = "cbox" id="2A" onclick="call('A2', '2A')" />
           <label class="label1" for="2A">2A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B2" value={{i.b2}} />
-          <input type="checkbox" class = "cbox" id="2B" />
+          <input type="hidden" id="B2" name="B2" value={{i.b2}} />
+          <input type="checkbox" class = "cbox" id="2B" onclick="call('B2', '2B')" />
           <label class="label1" for="2B">2B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C2" value={{i.c2}} />
-          <input type="checkbox" class = "cbox" id="2C" />
+          <input type="hidden" id="C2" name="C2" value={{i.c2}} />
+          <input type="checkbox" class = "cbox" id="2C" onclick="call('C2', '2C)" />
           <label class="label1" for="2C">2C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D2" value={{i.d2}} />
-          <input type="checkbox" class = "cbox" id="2D" />
+          <input type="hidden" id="D2" name="D2" value={{i.d2}} />
+          <input type="checkbox" class = "cbox" id="2D" onclick="call('D2', '2D')" />
           <label class="label1" for="2D">2D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E2" value={{i.e2}} />
-          <input type="checkbox" class = "cbox" id="2E" />
+          <input type="hidden" id="E2" name="E2" value={{i.e2}} />
+          <input type="checkbox" class = "cbox" id="2E" onclick="call('E2', '2E')" />
           <label class="label1" for="2E">2E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="F2" value={{i.f2}} />
-          <input type="checkbox" class = "cbox" id="2F" />
+          <input type="hidden" id="F2" name="F2" value={{i.f2}} />
+          <input type="checkbox" class = "cbox" id="2F" onclick="call('F2', '2F')" />
           <label class="label1" for="2F">2F</label>
         </li>
       </ol>
@@ -189,33 +141,33 @@ text-align:right;
     <li class="row row--3">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A3" value={{i.a3}} />
-          <input type="checkbox" class = "cbox" id="3A" />
+          <input type="hidden" id="A3" name="A3" value={{i.a3}} />
+          <input type="checkbox" class = "cbox" id="3A" onclick="call('A3', '3A')" />
           <label class="label1" for="3A">3A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B3" value={{i.b3}} />
-          <input type="checkbox" class = "cbox" id="3B" />
+          <input type="hidden" id="B3" name="B3" value={{i.b3}} />
+          <input type="checkbox" class = "cbox" id="3B" onclick="call('B3', '3B')" />
           <label class="label1" for="3B">3B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C3" value={{i.c3}} />
-          <input type="checkbox" class = "cbox" id="3C" />
+          <input type="hidden" id="C3" name="C3" value={{i.c3}} />
+          <input type="checkbox" class = "cbox" id="3C" onclick="call('C3', '3C')" />
           <label class="label1" for="3C">3C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D3" value={{i.d3}} />
-          <input type="checkbox" class = "cbox" id="3D" />
+          <input type="hidden" id="D3" name="D3" value={{i.d3}} />
+          <input type="checkbox" class = "cbox" id="3D" onclick="call('D3', '3D')" />
           <label class="label1" for="3D">3D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E3" value={{i.e3}} />
-          <input type="checkbox" class = "cbox" id="3E" />
+          <input type="hidden" id="E3" name="E3" value={{i.e3}} />
+          <input type="checkbox" class = "cbox" id="3E" onclick="call('E3', '3E')" />
           <label class="label1" for="3E">3E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="F3" value={{i.f3}} />
-          <input type="checkbox" class = "cbox" id="3F" />
+          <input type="hidden" id="F3" name="F3" value={{i.f3}} />
+          <input type="checkbox" class = "cbox" id="3F" onclick="call('F3', '3F')" />
           <label class="label1" for="3F">3F</label>
         </li>
       </ol>
@@ -225,37 +177,36 @@ text-align:right;
     </Bclass>
     <Eclass>
       {% for i in Edata %}
-      {% csrf_token %}
     <li class="row row--4">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A4" value={{i.a4}} />
-          <input type="checkbox" class = "cbox" id="4A" />
+          <input type="hidden" id="A4" name="A4" value={{i.a4}} />
+          <input type="checkbox" class = "cbox" id="4A" onclick="call('A4', '4A')" />
           <label class="label1" for="4A">4A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B4" value={{i.b4}} />
-          <input type="checkbox" class = "cbox" id="4B" />
+          <input type="hidden" id="B4" name="B4" value={{i.b4}} />
+          <input type="checkbox" class = "cbox" id="4B" onclick="call('B4', '4B')" />
           <label class="label1" for="4B">4B</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="C4" value={{i.c4}} />
-          <input type="checkbox" class = "cbox" id="4C" />
+           <input type="hidden" id="C4" name="C4" value={{i.c4}} />
+          <input type="checkbox" class = "cbox" id="4C" onclick="call('C4', '4C')" />
           <label class="label1" for="4C">4C</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="D4" value={{i.d4}} />
-          <input type="checkbox" class = "cbox" id="4D" />
+           <input type="hidden" id="D4" name="D4" value={{i.d4}} />
+          <input type="checkbox" class = "cbox" id="4D" onclick="call('D4', '4D')" />
           <label class="label1" for="4D">4D</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="E4" value={{i.e4}} />
-          <input type="checkbox" class = "cbox" id="4E" />
+           <input type="hidden" id="E4" name="E4" value={{i.e4}} />
+          <input type="checkbox" class = "cbox" id="4E" onclick="call('E4', '4E')" />
           <label class="label1" for="4E">4E</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="F4" value={{i.f4}} />
-          <input type="checkbox" class = "cbox" id="4F" />
+           <input type="hidden" id="F4" name="F4" value={{i.f4}} />
+          <input type="checkbox" class = "cbox" id="4F" onclick="call('F4', '4F')" />
           <label class="label1" for="4F">4F</label>
         </li>
       </ol>
@@ -263,33 +214,33 @@ text-align:right;
     <li class="row row--5">
       <ol class="seats" type="A">
         <li class="seat">
-           <input type="hidden" id="A5" value={{i.a5}} />
-          <input type="checkbox" class = "cbox" id="5A" />
+           <input type="hidden" id="A5" name="A5" value={{i.a5}} />
+          <input type="checkbox" class = "cbox" id="5A" onclick="call('A5', '5A')" />
           <label class="label1" for="5A">5A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B5" value={{i.b5}} />
-          <input type="checkbox" class = "cbox" id="5B" />
+          <input type="hidden" id="B5" name="B5" value={{i.b5}} />
+          <input type="checkbox" class = "cbox" id="5B" onclick="call('B5', '5B')" />
           <label class="label1" for="5B">5B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C5" value={{i.c5}} />
-          <input type="checkbox" class = "cbox" id="5C" />
+          <input type="hidden" id="C5" name="=C5" value={{i.c5}} />
+          <input type="checkbox" class = "cbox" id="5C" onclick="call('C5', '5C')" />
           <label class="label1" for="5C">5C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D5" value={{i.d5}} />
-          <input type="checkbox" class = "cbox" id="5D" />
+          <input type="hidden" id="D5" name="D5" value={{i.d5}} />
+          <input type="checkbox" class = "cbox" id="5D" onclick="call('D5', '5D')" />
           <label class="label1" for="5D">5D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E5" value={{i.e5}} />
-          <input type="checkbox" class = "cbox" id="5E" />
+          <input type="hidden" id="E5" name="E5" value={{i.e5}} />
+          <input type="checkbox" class = "cbox" id="5E" onclick="call('E5', '5E')" />
           <label class="label1" for="5E">5E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="F5" value={{i.f5}} />
-          <input type="checkbox" class = "cbox" id="5F" />
+          <input type="hidden" id="F5" name="F5" value={{i.f5}} />
+          <input type="checkbox" class = "cbox" id="5F" onclick="call('F5', '5F')" />
           <label class="label1" for="5F">5F</label>
         </li>
       </ol>
@@ -297,33 +248,33 @@ text-align:right;
     <li class="row row--6">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A6" value={{i.a6}} />
-          <input type="checkbox" class = "cbox" id="6A" />
+          <input type="hidden" id="A6" name="A6" value={{i.a6}} />
+          <input type="checkbox" class = "cbox" id="6A" onclick="call('A6', '6A')" />
           <label class="label1" for="6A">6A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B6" value={{i.b6}} />
-          <input type="checkbox" class = "cbox" id="6B" />
+          <input type="hidden" id="B6" name="B6" value={{i.b6}} />
+          <input type="checkbox" class = "cbox" id="6B" onclick="call('B6', '6B')" />
           <label class="label1" for="6B">6B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C6" value={{i.c6}} />
-          <input type="checkbox" class = "cbox" id="6C" />
+          <input type="hidden" id="C6" name="C6" value={{i.c6}} />
+          <input type="checkbox" class = "cbox" id="6C" onclick="call('C6', '6C')" />
           <label class="label1" for="6C">6C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D6" value={{i.d6}} />
-          <input type="checkbox" class = "cbox" id="6D" />
+          <input type="hidden" id="D6" name="D6" value={{i.d6}} />
+          <input type="checkbox" class = "cbox" id="6D" onclick="call('D6', '6D')" />
           <label class="label1" for="6D">6D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E6" value={{i.e6}} />
-          <input type="checkbox" class = "cbox" id="6E" />
+          <input type="hidden" id="E6" name="E6" value={{i.e6}} />
+          <input type="checkbox" class = "cbox" id="6E" onclick="call('E6', '6E')" />
           <label class="label1" for="6E">6E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="F6" value={{i.f6}} />
-          <input type="checkbox" class = "cbox" id="6F" />
+          <input type="hidden" id="F6" name="F6" value={{i.f6}} />
+          <input type="checkbox" class = "cbox" id="6F" onclick="call('F6', '6F')" />
           <label class="label1" for="6F">6F</label>
         </li>
       </ol>
@@ -331,33 +282,33 @@ text-align:right;
     <li class="row row--7">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A7" value={{i.a7}} />
-          <input type="checkbox" class = "cbox" id="7A" />
+          <input type="hidden" id="A7" name="A7" value={{i.a7}} />
+          <input type="checkbox" class = "cbox" id="7A" onclick="call('A7', '7A')" />
           <label class="label1" for="7A">7A</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="B7" value={{i.b7}} />
-          <input type="checkbox" class = "cbox" id="7B" />
+           <input type="hidden" id="B7" name="B7" value={{i.b7}} />
+          <input type="checkbox" class = "cbox" id="7B" onclick="call('B7', '7B')" />
           <label class="label1" for="7B">7B</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="C7" value={{i.c7}} />
-          <input type="checkbox" class = "cbox" id="7C" />
+           <input type="hidden" id="C7" name="C7" value={{i.c7}} />
+          <input type="checkbox" class = "cbox" id="7C" onclick="call('C7', '7C')" />
           <label class="label1" for="7C">7C</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="D7" value={{i.d7}} />
-          <input type="checkbox" class = "cbox" id="7D" />
+           <input type="hidden" id="D7" name="D7" value={{i.d7}} />
+          <input type="checkbox" class = "cbox" id="7D" onclick="call('D7', '7D')" />
           <label class="label1" for="7D">7D</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="E7" value={{i.e7}} />
-          <input type="checkbox" class = "cbox" id="7E" />
+           <input type="hidden" id="E7" name="E7" value={{i.e7}} />
+          <input type="checkbox" class = "cbox" id="7E" onclick="call('E7', '7E')" />
           <label class="label1" for="7E">7E</label>
         </li>
         <li class="seat">
-           <input type="hidden" id="F7" value={{i.f7}} />
-          <input type="checkbox" class = "cbox" id="7F" />
+           <input type="hidden" id="F7" name="F7" value={{i.f7}} />
+          <input type="checkbox" class = "cbox" id="7F" onclick="call('F7', '7F')" />
           <label class="label1" for="7F">7F</label>
         </li>
       </ol>
@@ -365,33 +316,33 @@ text-align:right;
     <li class="row row--8">
       <ol class="seats" type="A">
         <li class="seat">
-           <input type="hidden" id="A8" value={{i.a8}} />
-          <input type="checkbox" class = "cbox" id="8A" />
+           <input type="hidden" id="A8" name="A8" value={{i.a8}} />
+          <input type="checkbox" class = "cbox" id="8A" onclick="call('A8', '8A')" />
           <label class="label1" for="8A">8A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B8" value={{i.b8}} />
-          <input type="checkbox" class = "cbox" id="8B" />
+          <input type="hidden" id="B8" name="B8" value={{i.b8}} />
+          <input type="checkbox" class = "cbox" id="8B" onclick="call('B8', '8B')" />
           <label class="label1" for="8B">8B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C8" value={{i.c8}} />
-          <input type="checkbox" class = "cbox" id="8C" />
+          <input type="hidden" id="C8" name="C8" value={{i.c8}} />
+          <input type="checkbox" class = "cbox" id="8C" onclick="call('C8', '8C')" />
           <label class="label1" for="8C">8C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D8" value={{i.d8}} />
-          <input type="checkbox" class = "cbox" id="8D" />
+          <input type="hidden" id="D8" name="D8" value={{i.d8}} />
+          <input type="checkbox" class = "cbox" id="8D" onclick="call('D8', '8D')" />
           <label class="label1" for="8D">8D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E8" value={{i.e8}} />
-          <input type="checkbox" class = "cbox" id="8E" />
+          <input type="hidden" id="E8" name="E8" value={{i.e8}} />
+          <input type="checkbox" class = "cbox" id="8E" onclick="call('E8', '8E')" />
           <label class="label1" for="8E">8E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="f8" value={{i.f8}} />
-          <input type="checkbox" class = "cbox" id="8F" />
+          <input type="hidden" id="F8" name="F8" value={{i.f8}} />
+          <input type="checkbox" class = "cbox" id="8F" onclick="call('F8', '8F')" />
           <label class="label1" for="8F">8F</label>
         </li>
       </ol>
@@ -399,33 +350,33 @@ text-align:right;
     <li class="row row--9">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A9" value={{i.a9}} />
-          <input type="checkbox" class = "cbox" id="9A" />
+          <input type="hidden" id="A9" name="A9" value={{i.a9}} />
+          <input type="checkbox" class = "cbox" id="9A" onclick="call('A9', '9A')" />
           <label class="label1" for="9A">9A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B9" value={{i.b9}} />
-          <input type="checkbox" class = "cbox" id="9B" />
+          <input type="hidden" id="B9" name="B9" value={{i.b9}} />
+          <input type="checkbox" class = "cbox" id="9B" onclick="call('B9', '9B')" />
           <label class="label1" for="9B">9B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C9" value={{i.c9}} />
-          <input type="checkbox" class = "cbox" id="9C" />
+          <input type="hidden" id="C9" name="C9" value={{i.c9}} />
+          <input type="checkbox" class = "cbox" id="9C" onclick="call('C9', '9C')" />
           <label class="label1" for="9C">9C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D9" value={{i.d9}} />
-          <input type="checkbox" class = "cbox" id="9D" />
+          <input type="hidden" id="D9" name="D9" value={{i.d9}} />
+          <input type="checkbox" class = "cbox" id="9D" onclick="call('D9', '9D')" />
           <label class="label1" for="9D">9D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E9" value={{i.e9}} />
-          <input type="checkbox" class = "cbox" id="9E" />
+          <input type="hidden" id="E9" name="E9" value={{i.e9}} />
+          <input type="checkbox" class = "cbox" id="9E" onclick="call('E9', '9E')" />
           <label class="label1" for="9E">9E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="F9" value={{i.f9}} />
-          <input type="checkbox" class = "cbox" id="9F" />
+          <input type="hidden" id="F9" name="F9" value={{i.f9}} />
+          <input type="checkbox" class = "cbox" id="9F" onclick="call('F9', '9F')" />
           <label class="label1" for="9F">9F</label>
         </li>
       </ol>
@@ -433,39 +384,39 @@ text-align:right;
     <li class="row row--10">
       <ol class="seats" type="A">
         <li class="seat">
-          <input type="hidden" id="A10" value={{i.a10}} />
-          <input type="checkbox" class = "cbox" id="10A" />
+          <input type="hidden" id="A10" name="A10" value={{i.a10}} />
+          <input type="checkbox" class = "cbox" id="10A" onclick="call('A10', '10A')" />
           <label class="label1" for="10A">10A</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="B10" value={{i.b10}} />
-          <input type="checkbox" class = "cbox" id="10B" />
+          <input type="hidden" id="B10" name="B10" value={{i.b10}} />
+          <input type="checkbox" class = "cbox" id="10B" onclick="call('B10', '10B')" />
           <label class="label1" for="10B">10B</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="C10" value={{i.c10}} />
-          <input type="checkbox" class = "cbox" id="10C" />
+          <input type="hidden" id="C10" name="C10" value={{i.c10}} />
+          <input type="checkbox" class = "cbox" id="10C" onclick="call('C10', '10C')" />
           <label class="label1" for="10C">10C</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="D10" value={{i.d10}} />
-          <input type="checkbox" class = "cbox" id="10D" />
+          <input type="hidden" id="D10" name="D10" value={{i.d10}} />
+          <input type="checkbox" class = "cbox" id="10D" onclick="call('D10', '10D')" />
           <label class="label1" for="10D">10D</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="E10" value={{i.e10}} />
-          <input type="checkbox" class = "cbox" id="10E" />
+          <input type="hidden" id="E10" name="E10" value={{i.e10}} />
+          <input type="checkbox" class = "cbox" id="10E" onclick="call('E10', '10E')" />
           <label class="label1" for="10E">10E</label>
         </li>
         <li class="seat">
-          <input type="hidden" id="F10" value={{i.f10}} />
-          <input type="checkbox" class = "cbox" id="10F" />
+          <input type="hidden" id="F10" name="F10" value={{i.f10}} />
+          <input type="checkbox" class = "cbox" id="10F" onclick="call('F10', '10F')" />
           <label class="label1" for="10F">10F</label>
         </li>
       </ol>
     </li>
       {% endfor %}
-      </Eclass>
+    </Eclass>
   </ol>
   <div class="exit exit--back fuselage">
   </div>
@@ -474,15 +425,29 @@ text-align:right;
   <table id="t01" style="width:50%; background-color:blue">
     <tr>
       <th>Wheelchair</th>
-      <th>Assistent</th>
+      <th>Assistant</th>
       <th>Child Seat</th>
     </tr>
     <tr>
-        <td><input type="checkbox" id="ad1" name="ad1" value="ad1" ></td>
-        <td><input type="checkbox" id="ad2" name="ad2" value="ad2" ></td>
-        <td><input type="checkbox" id="ad3" name="ad3" value="ad3" ></td>
+        <td><input type="checkbox" id="wc" name="wc" value="checked" ></td>
+        <td><input type="checkbox" id="ast" name="ast" value="checked" ></td>
+        <td><input type="checkbox" id="cseat" name="cseat" value="checked" ></td>
     </tr>
   </table>
+</div>
+<div>
+  <table id="passenger" class="center">
+    <tr>
+        <br><br><br><th style="width: 2%">Sl No</th>
+        <th style="width: 20%">Seat No</th>
+        <th style="width: 20%">First Name</th>
+        <th style="width: 20%">Last Name</th>
+        <th style="width: 15%">Dob</th>
+        <th style="width: 43%">Address</th>
+
+    </tr>
+
+</table>
 </div>
 <input type="submit" name="submit" value="Book Now" />
 </body>

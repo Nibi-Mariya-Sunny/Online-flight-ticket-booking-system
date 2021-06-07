@@ -434,16 +434,410 @@ def fsearch(request):
         td = datetime.strptime(ddate, '%Y-%m-%d')
     return render(request, 'availabileflights.html', {'d': data, 'ddate': ddate})
 def seatselection(request):
+    id = request.POST['fselect']
+    fddate = request.POST['fddate']
+    print(id)
+    print(fddate)
+    data = Addflightschedule.objects.get(id=id)
     Bdata = Bclass.objects.all()
     for x in Bdata:
         print(x)
     Edata = Eclass.objects.all()
-    return render(request, 'seatselection.html', {'Bdata': Bdata, 'Edata': Edata})
+    return render(request, 'seatselection.html', {'Bdata': Bdata, 'Edata': Edata, 'data': data, 'fddate': fddate, 'id': id})
 def seatreg(request):
     Bdata = Bclass.objects.all()
     Edata = Eclass.objects.all()
     return render(request, 'Userhome.html', {'Bdata': Bdata, 'Edata': Edata})
 def seatConfirm(request):
-    b1 = request.session('B1')
-    print(b1)
-    return render(request, 'Userhome.html', {'Bdata': Bdata, 'Edata': Edata})
+    d = Bclass.objects.get(key="seatNo")
+    e = Eclass.objects.get(key="seatNo")
+    fid = request.POST.get("fid")
+    tAmount = 0
+    print("fligh = ")
+    print(fid)
+    A1 = request.POST.get("A1")
+    B1 = request.POST.get("B1")
+    C1 = request.POST.get("C1")
+    D1 = request.POST.get("D1")
+    E1 = request.POST.get("E1")
+    F1 = request.POST.get("F1")
+    A2 = request.POST.get("A2")
+    B2 = request.POST.get("B2")
+    print(B2)
+    C2 = request.POST.get("C2")
+    D2 = request.POST.get("D2")
+    E2 = request.POST.get("E2")
+    F2 = request.POST.get("F2")
+    A3 = request.POST.get("A3")
+    B3 = request.POST.get("B3")
+    C3 = request.POST.get("C3")
+    D3 = request.POST.get("D3")
+    E3 = request.POST.get("E3")
+    F3 = request.POST.get("F3")
+    A4 = request.POST.get("A4")
+    B4 = request.POST.get("B4")
+    C4 = request.POST.get("C4")
+    D4 = request.POST.get("D4")
+    E4 = request.POST.get("E4")
+    F4 = request.POST.get("F4")
+    A5 = request.POST.get("A5")
+    B5 = request.POST.get("B5")
+    C5 = request.POST.get("C5")
+    D5 = request.POST.get("D5")
+    E5 = request.POST.get("E5")
+    F5 = request.POST.get("F5")
+    A6 = request.POST.get("A6")
+    B6 = request.POST.get("B6")
+    C6 = request.POST.get("C6")
+    D6 = request.POST.get("D6")
+    E6 = request.POST.get("E6")
+    F6 = request.POST.get("F6")
+    A7 = request.POST.get("A7")
+    B7 = request.POST.get("B7")
+    C7 = request.POST.get("C7")
+    D7 = request.POST.get("D7")
+    E7 = request.POST.get("E7")
+    F7 = request.POST.get("F7")
+    A8 = request.POST.get("A8")
+    B8 = request.POST.get("B8")
+    C8 = request.POST.get("C8")
+    D8 = request.POST.get("D8")
+    E8 = request.POST.get("E8")
+    F8 = request.POST.get("F8")
+    A9 = request.POST.get("A9")
+    B9 = request.POST.get("B9")
+    C9 = request.POST.get("C9")
+    D9 = request.POST.get("D9")
+    E9 = request.POST.get("E9")
+    F9 = request.POST.get("F9")
+    A10 = request.POST.get("A10")
+    B10 = request.POST.get("B10")
+    C10 = request.POST.get("C10")
+    D10 = request.POST.get("D10")
+    E10 = request.POST.get("E10")
+    F10 = request.POST.get("F10")
+    print(A7)
+    if A1 == "checked":
+        d.a1 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount +fdata.wsamount
+    if B1 == "checked":
+        d.b1 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if C1 == "checked":
+        d.c1 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if D1 == "checked":
+        d.d1 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if E1 == "checked":
+        d.e1 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if F1 == "checked":
+        d.f1 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount + fdata.wsamount
+    if A2 == "checked":
+        d.a2 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount + fdata.wsamount
+    if B2 == "checked":
+        d.b2 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if C2 == "checked":
+        d.c2 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if D2 == "checked":
+        d.d2 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if E2 == "checked":
+        d.e2 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if F2 == "checked":
+        d.f2 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount + fdata.wsamount
+    if A3 == "checked":
+        d.a3 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount + fdata.wsamount
+    if B3 == "checked":
+        d.b3 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if C3 == "checked":
+        d.c3 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if D3 == "checked":
+        d.d3 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if E3 == "checked":
+        d.e3 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount
+    if F3 == "checked":
+        d.f3 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.bcamount)
+        tAmount = tAmount + fdata.bcamount + fdata.wsamount
+    if A4 == "checked":
+        e.a4 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if B4 == "checked":
+        e.b4 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if C4 == "checked":
+        e.c4 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if D4 == "checked":
+        e.d4 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if E4 == "checked":
+        e.e4 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if F4 == "checked":
+        e.f4 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if A5 == "checked":
+        e.a5 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if B5 == "checked":
+        e.b5 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if C5 == "checked":
+        e.c5 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if D5 == "checked":
+        e.d5 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if E5 == "checked":
+        e.e5 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if F5 == "checked":
+        e.f5 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if A6 == "checked":
+        e.a6 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if B6 == "checked":
+        e.b6 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if C6 == "checked":
+        e.c6 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if D6 == "checked":
+        e.d6 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if E6 == "checked":
+        e.e6 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if F6 == "checked":
+        e.f6 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if A7 == "checked":
+        e.a7 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if B7 == "checked":
+        e.b7 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if C7 == "checked":
+        e.c7 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if D7 == "checked":
+        e.d7 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if E7 == "checked":
+        e.e7 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if F7 == "checked":
+        e.f7 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if A8 == "checked":
+        e.a8 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if B8 == "checked":
+        e.b8 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if C8 == "checked":
+        e.c8 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if D8 == "checked":
+        e.d8 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if E8 == "checked":
+        e.e8 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if F8 == "checked":
+        e.f8 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if A9 == "checked":
+        e.a9 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if B9 == "checked":
+        e.b9 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if C9 == "checked":
+        e.c9 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if D9 == "checked":
+        e.d9 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if E9 == "checked":
+        e.e9 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if F9 == "checked":
+        e.f9 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if A10 == "checked":
+        e.a10 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    if B10 == "checked":
+        e.b10 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if C10 == "checked":
+        e.c10 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if D10 == "checked":
+        e.d10 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if E10 == "checked":
+        e.e10 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount
+    if F10 == "checked":
+        e.f10 = 1
+        fdata = Addflightschedule.objects.get(id=fid)
+        print(fdata.amount)
+        tAmount = tAmount + fdata.amount + fdata.wsamount
+    wc = request.POST.get("wc")
+    ast = request.POST.get("ast")
+    cseat = request.POST.get("cseat")
+    print(wc)
+    if wc ==  "checked":
+       wcData = Addaddon.objects.filter(aname="wheelchair")
+       for x in wcData:
+            print(x.amount)
+            tAmount=tAmount + x.amount
+    if ast ==  "checked":
+       astData = Addaddon.objects.filter(aname="Assistant")
+       for x in astData:
+            print(x.amount)
+    if cseat ==  "checked":
+       cseatData = Addaddon.objects.filter(aname="childSeat")
+       for x in cseatData:
+            print(x.amount)
+    print(tAmount)
+
+
+
+    d.save()
+    e.save()
+    return render(request, 'Userhome.html', {'B1': B1})
