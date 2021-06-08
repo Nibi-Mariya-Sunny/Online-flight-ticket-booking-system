@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django . http import HttpResponse
 from datetime import date, datetime
-from bs4 import BeautifulSoup
-import os
+from bs4 import beautfulSoup
 
 from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment,Bclass,Eclass
 def home(request):
@@ -439,22 +438,23 @@ def seatselection(request):
     print(id)
     print(fddate)
     data = Addflightschedule.objects.get(id=id)
-    Bdata = Bclass.objects.all()
+    Bdata = Bclass.objects.filter(key=id)
     for x in Bdata:
         print(x)
-    Edata = Eclass.objects.all()
+    Edata = Eclass.objects.filter(key=id)
     return render(request, 'seatselection.html', {'Bdata': Bdata, 'Edata': Edata, 'data': data, 'fddate': fddate, 'id': id})
 def seatreg(request):
     Bdata = Bclass.objects.all()
     Edata = Eclass.objects.all()
     return render(request, 'Userhome.html', {'Bdata': Bdata, 'Edata': Edata})
 def seatConfirm(request):
-    d = Bclass.objects.get(key="seatNo")
-    e = Eclass.objects.get(key="seatNo")
-    fid = request.POST.get("fid")
+    fid = request.POST.get('fid')
+    d = Bclass.objects.get(key=fid)
+    e = Eclass.objects.get(key=fid)
     tAmount = 0
     print("fligh = ")
     print(fid)
+    print(d)
     A1 = request.POST.get("A1")
     B1 = request.POST.get("B1")
     C1 = request.POST.get("C1")
@@ -835,9 +835,10 @@ def seatConfirm(request):
        for x in cseatData:
             print(x.amount)
     print(tAmount)
-
-
-
     d.save()
     e.save()
+
+    tables = bs4.BeautifulSoup(html).find("passenger")
+    data  = []
+    print(data)
     return render(request, 'Userhome.html', {'B1': B1})
