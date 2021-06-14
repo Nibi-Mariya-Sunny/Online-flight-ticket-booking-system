@@ -63,4 +63,5 @@ urlpatterns = [
     path('fsearch', views.fsearch, name='fsearch'),
     path('seatselection', views.seatselection, name='seatselection'),
     path('seatConfirm', views.seatConfirm, name='seatConfirm'),
+    path('cbooking', views.cbooking, name='cbooking'),
 ]

@@ -60,13 +60,13 @@ class Addpackage(models.Model):
     pname = models.CharField(max_length=30)
     pamount=models.IntegerField()
 class Payment(models.Model):
-    userid = models.CharField(max_length=30)
-    fid = models.CharField(max_length=30)
-    date = models.CharField(max_length=30)
-    amt = models.IntegerField()
-    status = models.IntegerField()
+    cid = models.ForeignKey(Register, on_delete=models.CASCADE)
+    fid = models.ForeignKey(Addflightschedule, on_delete=models.CASCADE)
+    cdate = models.CharField(max_length=30)
+    gtotal = models.IntegerField()
+    status = models.CharField(max_length=30)
 class Bclass(models.Model):
-    key = models.CharField(max_length=6)
+    key = models.IntegerField()
     a1 = models.IntegerField()
     b1 = models.IntegerField()
     c1 = models.IntegerField()
@@ -86,7 +86,7 @@ class Bclass(models.Model):
     e3 = models.IntegerField()
     f3 = models.IntegerField()
 class Eclass(models.Model):
-    key = models.CharField(max_length=6)
+    key = models.IntegerField()
     a4 = models.IntegerField()
     b4 = models.IntegerField()
     c4 = models.IntegerField()

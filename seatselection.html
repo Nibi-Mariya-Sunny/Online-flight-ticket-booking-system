@@ -33,8 +33,59 @@ padding-right:0.3em;
 text-align:right;
 
 </style>
-<script src="{% static 'jscript\seatselection.js' %}">
+<script src="{% static 'jscript\seatselection.js' %}"></script>
+<script>
+  function table_to_array() {
+        var seatNos = document.getElementsByName("seatNo");
+        var seatNoslen = seatNos.length;
 
+        var fnames = document.getElementsByName("fname");
+        var fnamelen = fnames.length;
+
+        var lnames = document.getElementsByName("lname");
+        var lnamelen = lnames.length;
+        alert("lnameln = " + lnamelen);
+
+        var dobs = document.getElementsByName("dob");
+        var doblen = dobs.length;
+
+        var adrss = document.getElementsByName("address");
+        var adrslen = adrss.length;
+
+        var internalArray = [];
+        var seatNoArray = [];
+        var fnameArray = [];
+        var lnameArray = [];
+        var dobArray = [];
+        var addrArray = [];
+
+        for(var j = 0; j < seatNoslen; j++){
+            var sno = seatNos[j].innerHTML;
+            seatNoArray.push(sno);
+
+          }
+          alert("seat nos " + seatNoArray);
+        for(var j = 0; j < fnamelen; j++){
+            var fnm = fnames[j].value;
+            fnameArray.push(fnm);
+          }
+          alert(" first name " + fnameArray);
+        for(var j = 0; j < lnamelen; j++){
+            var lnm = lnames[j].value;
+            lnameArray.push(lnm);
+            alert("lname = " + lnameArray);
+          }
+        for(var j = 0; j < doblen; j++){
+            var dbth = dobs[j].value;
+            dobArray.push(dbth);
+            alert("dob = " + dobArray);
+          }
+        for(var j = 0; j < adrslen; j++){
+            var adrs = adrss[j].value;
+            addrArray.push(adrs);
+            alert("addr = " + addrArray);
+          }
+  }
 </script>
 <div class="plane">
 <center><h1>Booking</h1></center>
@@ -65,7 +116,7 @@ text-align:right;
   </div>
   <ol class="cabin fuselage">
     <br>
-    <form action="seatConfirm" method="post" enctype="multipart/form-data">
+  <form action="seatConfirm" method="post" enctype="multipart/form-data">
     {% for i in Bdata %}
     {% csrf_token %}
       <input type="hidden" id="fid" name="fid" value={{id}} />
@@ -435,20 +486,10 @@ text-align:right;
     </tr>
   </table>
 </div>
-<div>
-  <table id="passenger" class="center">
-    <tr>
-        <br><br><br><th style="width: 2%">Sl No</th>
-        <th style="width: 20%">Seat No</th>
-        <th style="width: 20%">First Name</th>
-        <th style="width: 20%">Last Name</th>
-        <th style="width: 15%">Dob</th>
-        <th style="width: 43%">Address</th>
-
-    </tr>
-
-</table>
-</div>
+<br>
+<div id="cont"> </div>
+<input type="submit" name="submit" value="check" onclick="submit()" />
+<p id='output' name="output"></p>
 <input type="submit" name="submit" value="Book Now" />
 </body>
 </html>

@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django . http import HttpResponse
 from datetime import date, datetime
-from bs4 import beautfulSoup
+import cgi
+import cgitb
 
 from.models import Register,Login,Addflightname,Orgin,Destination,District,Flightrate,Addflightschedule,Addaddon,Addpackage,Booking,Payment,Bclass,Eclass
 def home(request):
@@ -398,10 +399,10 @@ def confirmbooking(request):
     data.save()
 
     return render(request,'payment.html',{'amt':amt})
-def payment(request):
+'''def payment(request):
     user = request.session['user']
     Payment.objects.filter(userid=user).update(status=1)
-    return HttpResponse("payment Successes")
+    return HttpResponse("payment Successes")'''
 def searchflight(request):
     data1 = Orgin.objects.all()
     data2 = Destination.objects.all()
@@ -835,10 +836,27 @@ def seatConfirm(request):
        for x in cseatData:
             print(x.amount)
     print(tAmount)
-    d.save()
-    e.save()
+    form = cgi.FieldStorage()
+    data1_list = request.POST.get("output[1]")
+    print(data1_list)
+    ''' d.save()
+    e.save() '''
+    return render(request, 'seatselection.html', {'B1': B1})
+def payment(request):
+    user = request.session['user']
+    insta = Register.objects.get(email=user)
+    fid = request.POST['fid']
+    insta1=Addflightschedule.objects.get(id=fid)
+    cdate = date.today()
+    gtotal = request.POST['tAmount']
+    data = Payment(cid=insta, fid=insta1, cdate=cdate, gtotal=gtotal, status=0)
+    data.save()
+    if request.method=='POST':
+        amount = int(gtotal)*100
+        order_currency = 'INR'
+        client = razorpay.Client(auth=('rzp_test_PBqF4lh6GP03qs','bhWm11oETpZU6XCf90NZQ8Eo'))
+        payment=client.order.create({'amount':amount,'currency':'INR','payment_capture': '1'})
 
-    tables = bs4.BeautifulSoup(html).find("passenger")
-    data  = []
-    print(data)
-    return render(request, 'Userhome.html', {'B1': B1})
+    return render(request, 'payment.html',{'amount':amount,'user':user})
+def cbooking(request):
+    return render(request,'cbooking.html')
